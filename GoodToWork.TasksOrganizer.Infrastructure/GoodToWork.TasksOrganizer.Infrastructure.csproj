@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,7 +11,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GoodToWork.TasksOrganizer.Domain\GoodToWork.TasksOrganizer.Domain.csproj" />
+    <ProjectReference Include="..\GoodToWork.TasksOrganizer.Application\GoodToWork.TasksOrganizer.Application.csproj" />
   </ItemGroup>
 
+    <ItemGroup>
+	    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+		    <_Parameter1>GoodToWork.TasksOrganizer.Infrastructure.Tests</_Parameter1>
+	    </AssemblyAttribute>
+    </ItemGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+	
 </Project>
