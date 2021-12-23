@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GoodToWork.TasksOrganizer.Infrastructure.Features.Project.Queries;
 
-internal class GetProjectsHandler : IRequestHandler<GetProjectsQuery, List<ProjectEntity>>
+internal sealed class GetProjectsHandler : IRequestHandler<GetProjectsQuery, List<ProjectEntity>>
 {
     private readonly AppDbContext _appDbContext;
 

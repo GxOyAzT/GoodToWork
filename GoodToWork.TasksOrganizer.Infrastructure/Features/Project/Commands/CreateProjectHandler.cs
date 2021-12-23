@@ -7,7 +7,7 @@ using MediatR;
 
 namespace GoodToWork.TasksOrganizer.Infrastructure.Features.Project.Commands;
 
-internal class CreateProjectHandler : IRequestHandler<CreateProjectCommand, ProjectEntity>
+internal sealed class CreateProjectHandler : IRequestHandler<CreateProjectCommand, ProjectEntity>
 {
     private readonly AppDbContext _appDbContext;
     private readonly IMediator _mediator;
