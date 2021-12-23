@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.TasksOrganizer.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.TasksOrganizer.Infrastructure.Tests", "GoodToWork.TasksOrganizer.Infrastructure.Tests\GoodToWork.TasksOrganizer.Infrastructure.Tests.csproj", "{ADC8FC17-8914-4557-8CD2-8F4C1910A697}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.TasksOrganizer.Application.Tests", "GoodToWork.TasksOrganizer.Application.Tests\GoodToWork.TasksOrganizer.Application.Tests.csproj", "{E565D7AD-72E3-41BC-AF48-6D455A5AB904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ADC8FC17-8914-4557-8CD2-8F4C1910A697}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADC8FC17-8914-4557-8CD2-8F4C1910A697}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADC8FC17-8914-4557-8CD2-8F4C1910A697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{C0B3C8D5-C4F9-488B-BAA0-3DC26DAB402A} = {D9158101-DEAD-4310-B8F4-E6F8F0E318AF}
 		{72778149-AB89-41B4-822E-F5206CCBCFE6} = {D9158101-DEAD-4310-B8F4-E6F8F0E318AF}
 		{ADC8FC17-8914-4557-8CD2-8F4C1910A697} = {389EDDD3-2784-4508-B19F-FE50F076FFE3}
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904} = {389EDDD3-2784-4508-B19F-FE50F076FFE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B961D32-41B4-42A3-9E1C-0A2DA9F9450B}
