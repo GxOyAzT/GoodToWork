@@ -1,6 +1,8 @@
-﻿namespace GoodToWork.TasksOrganizer.Domain.Entities;
+﻿using GoodToWork.TasksOrganizer.Domain.Entities.Shared;
 
-public class CommentEntity
+namespace GoodToWork.TasksOrganizer.Domain.Entities;
+
+public class CommentEntity : BaseEntity
 {
     public Guid Id { get; set; }
 

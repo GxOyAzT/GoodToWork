@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GoodToWork.TasksOrganizer.Domain.Entities.Shared;
 
 namespace GoodToWork.TasksOrganizer.Domain.Entities;
 
-public class TaskEntity
+public class TaskEntity : BaseEntity
 {
     public Guid Id { get; set; }
 
