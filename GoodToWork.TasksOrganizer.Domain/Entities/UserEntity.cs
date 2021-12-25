@@ -1,6 +1,8 @@
-﻿namespace GoodToWork.TasksOrganizer.Domain.Entities;
+﻿using GoodToWork.TasksOrganizer.Domain.Entities.Shared;
 
-public class UserEntity
+namespace GoodToWork.TasksOrganizer.Domain.Entities;
+
+public class UserEntity : BaseEntity
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

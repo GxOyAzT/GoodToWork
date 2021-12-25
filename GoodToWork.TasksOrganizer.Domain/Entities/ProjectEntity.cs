@@ -1,6 +1,8 @@
-﻿namespace GoodToWork.TasksOrganizer.Domain.Entities;
+﻿using GoodToWork.TasksOrganizer.Domain.Entities.Shared;
 
-public class ProjectEntity
+namespace GoodToWork.TasksOrganizer.Domain.Entities;
+
+public class ProjectEntity : BaseEntity
 {
     public Guid Id { get; set; }
     public bool IsActive { get; set; }

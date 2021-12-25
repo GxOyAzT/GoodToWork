@@ -1,8 +1,9 @@
-﻿using GoodToWork.TasksOrganizer.Domain.Enums;
+﻿using GoodToWork.TasksOrganizer.Domain.Entities.Shared;
+using GoodToWork.TasksOrganizer.Domain.Enums;
 
 namespace GoodToWork.TasksOrganizer.Domain.Entities;
 
-public class ProjectUserEntity
+public class ProjectUserEntity : BaseEntity
 {
     public Guid ProjectId { get; set; }
     public Guid UserId { get; set; }

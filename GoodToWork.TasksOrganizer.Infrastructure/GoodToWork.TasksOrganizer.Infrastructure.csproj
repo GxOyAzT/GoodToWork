@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GoodToWork.TasksOrganizer.Application\GoodToWork.TasksOrganizer.Application.csproj" />
+    <ProjectReference Include="..\GoodToWork.TasksOrganizer.Persistance\GoodToWork.TasksOrganizer.Persistance.csproj" />
   </ItemGroup>
 
     <ItemGroup>
