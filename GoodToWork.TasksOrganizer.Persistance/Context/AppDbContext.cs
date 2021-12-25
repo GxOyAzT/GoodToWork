@@ -1,7 +1,7 @@
 ﻿using GoodToWork.TasksOrganizer.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GoodToWork.TasksOrganizer.Infrastructure.Persistance.Context;
+namespace GoodToWork.TasksOrganizer.Persistance.Context;
 
 internal class AppDbContext : DbContext
 {

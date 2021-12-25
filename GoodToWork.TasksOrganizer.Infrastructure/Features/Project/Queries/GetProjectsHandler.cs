@@ -1,6 +1,6 @@
 ﻿using GoodToWork.TasksOrganizer.Application.Features.Project.Queries;
 using GoodToWork.TasksOrganizer.Domain.Entities;
-using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Context;
+using GoodToWork.TasksOrganizer.Persistance.Repositories.AppRepo;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,19 +8,15 @@ namespace GoodToWork.TasksOrganizer.Infrastructure.Features.Project.Queries;
 
 internal sealed class GetProjectsHandler : IRequestHandler<GetProjectsQuery, List<ProjectEntity>>
 {
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppRepository _appRepository;
 
-    public GetProjectsHandler(AppDbContext appDbContext)
+    public GetProjectsHandler(IAppRepository appRepository)
     {
-        _appDbContext = appDbContext;
+        _appRepository = appRepository;
     }
 
     public async Task<List<ProjectEntity>> Handle(GetProjectsQuery request, CancellationToken cancellationToken)
     {
-        return await _appDbContext.ProjectUsers
-            .Include(e => e.Project)
-            .Where(e => e.UserId == request.SenderId)
-            .Select(e => e.Project)
-            .ToListAsync();
+        return await _appRepository.Projects.GetWithUsers();
     }
 }

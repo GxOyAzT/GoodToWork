@@ -3,9 +3,9 @@ using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Validation;
 using GoodToWork.TasksOrganizer.Infrastructure.Features.Project.Commands;
 using GoodToWork.TasksOrganizer.Infrastructure.Features.Project.Queries;
-using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Context;
+using GoodToWork.TasksOrganizer.Persistance.Repositories.AppRepo;
+using GoodToWork.TasksOrganizer.Persistance.Repositories.Project;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Threading;
@@ -19,7 +19,7 @@ public class CreateProjectHandlerTests
     [Fact]
     public async Task Check_Validation_ThrowsException()
     {
-        var mockedDbContext = new Mock<AppDbContext>();
+        var mockedAppRepo = new Mock<IAppRepository>();
         var mockedMediator = new Mock<IMediator>();
 
         mockedMediator.Setup(m => m.Send(It.IsAny<ValidateProjectInputQuery>(), It.IsAny<CancellationToken>()))
@@ -27,7 +27,7 @@ public class CreateProjectHandlerTests
 
         var input = new CreateProjectCommand("", "", Guid.Empty);
 
-        var testedUnit = new CreateProjectHandler(mockedDbContext.Object, mockedMediator.Object);
+        var testedUnit = new CreateProjectHandler(mockedMediator.Object, mockedAppRepo.Object);
 
         await Assert.ThrowsAsync<ValidationFailedError>(() => testedUnit.Handle(input, new CancellationToken()));
     }
@@ -35,9 +35,10 @@ public class CreateProjectHandlerTests
     [Fact]
     public async Task Check_Validation_Ok()
     {
-        var mockedDbContext = new Mock<AppDbContext>();
+        var mockedAppRepo = new Mock<IAppRepository>();
+        var mockedProjectRepo = new Mock<IProjectRepository>();
 
-        mockedDbContext.Setup(m => m.Projects).Returns(new Mock<DbSet<ProjectEntity>>().Object);
+        mockedAppRepo.Setup(m => m.Projects).Returns(mockedProjectRepo.Object);
         
         var mockedMediator = new Mock<IMediator>();
 
@@ -46,12 +47,10 @@ public class CreateProjectHandlerTests
 
         var input = new CreateProjectCommand("valid_name", "valid_description", Guid.Empty);
 
-        var testedUnit = new CreateProjectHandler(mockedDbContext.Object, mockedMediator.Object);
+        var testedUnit = new CreateProjectHandler(mockedMediator.Object, mockedAppRepo.Object);
 
         await testedUnit.Handle(input, new CancellationToken());
 
-        mockedDbContext.Verify(v => v.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
-
-        mockedDbContext.Verify(v => v.Projects.AddAsync(It.Is<ProjectEntity>(x => x.Name == "valid_name" && x.Description == "valid_description"), It.IsAny<CancellationToken>()), Times.Once);
+        mockedProjectRepo.Verify(v => v.Add(It.Is<ProjectEntity>(x => x.Name == "valid_name" && x.Description == "valid_description")), Times.Once);
     }
 }

@@ -2,22 +2,22 @@
 using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Infrastructure.Builders.Entities.Project;
 using GoodToWork.TasksOrganizer.Infrastructure.Features.Project.Queries;
-using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Context;
+using GoodToWork.TasksOrganizer.Persistance.Repositories.AppRepo;
 using MediatR;
 
 namespace GoodToWork.TasksOrganizer.Infrastructure.Features.Project.Commands;
 
 internal sealed class CreateProjectHandler : IRequestHandler<CreateProjectCommand, ProjectEntity>
 {
-    private readonly AppDbContext _appDbContext;
     private readonly IMediator _mediator;
+    private readonly IAppRepository _appRepository;
 
     public CreateProjectHandler(
-        AppDbContext appDbContext,
-        IMediator mediator)
+        IMediator mediator,
+        IAppRepository appRepository)
     {
-        _appDbContext = appDbContext;
         _mediator = mediator;
+        _appRepository = appRepository;
     }
 
     public async Task<ProjectEntity> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
@@ -31,10 +31,6 @@ internal sealed class CreateProjectHandler : IRequestHandler<CreateProjectComman
                             .WithCreator(request.SenderId)
                             .Build();
 
-        await _appDbContext.Projects.AddAsync(newProject);
-
-        await _appDbContext.SaveChangesAsync();
-
-        return newProject;
+        return await _appRepository.Projects.Add(newProject);
     }
 }

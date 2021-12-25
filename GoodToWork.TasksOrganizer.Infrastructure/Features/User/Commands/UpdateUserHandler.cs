@@ -1,28 +1,29 @@
 ﻿using GoodToWork.TasksOrganizer.Application.Features.User.Commands;
 using GoodToWork.TasksOrganizer.Domain.Entities;
-using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Context;
+using GoodToWork.TasksOrganizer.Persistance.Repositories.AppRepo;
+using GoodToWork.TasksOrganizer.Persistance.Repositories.User;
 using MediatR;
 
 namespace GoodToWork.TasksOrganizer.Infrastructure.Features.User.Commands;
 
 internal sealed class UpdateUserHandler : IRequestHandler<UpdateUserCommand>
 {
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppRepository _appRepository;
 
     public UpdateUserHandler(
-        AppDbContext appDbContext)
+        IAppRepository appRepository)
     {
-        _appDbContext = appDbContext;
+        _appRepository = appRepository;
     }
 
     public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
-        var user = _appDbContext.Users.FirstOrDefault(e => e.Id == request.UserId);
+        var user = await _appRepository.Users.Find(u => u.Id == request.UserId);
 
         if (user is not null)
         {
             user.Name = request.Username;
-            _appDbContext.Users.Update(user);
+            await _appRepository.Users.Update(user);
         }
 
         if (user is null)
@@ -33,10 +34,8 @@ internal sealed class UpdateUserHandler : IRequestHandler<UpdateUserCommand>
                 Name = request.Username
             };
 
-            await _appDbContext.Users.AddAsync(user);
+            await _appRepository.Users.Add(user);
         }
-
-        await _appDbContext.SaveChangesAsync();
 
         return Unit.Value;
     }
