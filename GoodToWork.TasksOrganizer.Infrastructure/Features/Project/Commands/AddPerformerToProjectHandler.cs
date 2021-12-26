@@ -4,34 +4,33 @@ using GoodToWork.TasksOrganizer.Domain.Enums;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Entities;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Shared;
-using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Context;
+using GoodToWork.TasksOrganizer.Persistance.Repositories.AppRepo;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 namespace GoodToWork.TasksOrganizer.Infrastructure.Features.Project.Commands;
 
 internal class AddPerformerToProjectHandler : IRequestHandler<AddPerformerToProjectCommand, Unit>
 {
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppRepository _appRepository;
 
-    public AddPerformerToProjectHandler(AppDbContext appDbContext)
+    public AddPerformerToProjectHandler(
+        IAppRepository appRepository)
     {
-        _appDbContext = appDbContext;
+        _appRepository = appRepository;
     }
 
     public async Task<Unit> Handle(AddPerformerToProjectCommand request, CancellationToken cancellationToken)
     {
-        var project = await _appDbContext.Projects
-            .Include(e => e.ProjectUsers)
-            .FirstOrDefaultAsync(e => e.Id == request.ProjectId);
+        var project = (await _appRepository.Projects.GetWithUsers(x => x.Id == request.ProjectId))
+            .FirstOrDefault();
 
         if (project == null)
         {
             throw new CannnotFindException($"Cannot find project of id {request.ProjectId}", HttpStatusCode.NotFound);
         }
 
-        if (project.ProjectUsers.Any(e => e.UserId == request.SenderId && e.Role == UserProjectRoleEnum.Moderator))
+        if (!project.ProjectUsers.Any(e => e.UserId == request.SenderId && e.Role == UserProjectRoleEnum.Moderator))
         {
             throw new NoAccessException("You do not have access for adding new performers.", HttpStatusCode.Forbidden);
         }
@@ -41,7 +40,7 @@ internal class AddPerformerToProjectHandler : IRequestHandler<AddPerformerToProj
             throw new DomainException($"User of ID {request.NewPerformerId} already is binded to Project of ID {request.ProjectId}.", HttpStatusCode.BadRequest);
         }
 
-        if (await _appDbContext.Users.FirstOrDefaultAsync(e => e.Id == request.NewPerformerId) is null)
+        if (await _appRepository.Users.Find(user => user.Id == request.SenderId) is null)
         {
             throw new DomainException($"Cannot find user of ID {request.NewPerformerId}.", HttpStatusCode.BadRequest);
         }
@@ -53,7 +52,7 @@ internal class AddPerformerToProjectHandler : IRequestHandler<AddPerformerToProj
             Role = UserProjectRoleEnum.Performer
         });
 
-        await _appDbContext.SaveChangesAsync();
+        await _appRepository.Projects.Update(project);
 
         return Unit.Value;
     }
