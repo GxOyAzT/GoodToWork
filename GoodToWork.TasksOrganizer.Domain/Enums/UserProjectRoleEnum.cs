@@ -2,7 +2,8 @@
 
 public enum UserProjectRoleEnum
 {
-    TaskPerformer = 0,
-    TaskCreator = 1,
-    Moderator = 2
+    Performer = 0,
+    Creator = 1,
+    PerformerCreator = 2,
+    Moderator = 4
 }
