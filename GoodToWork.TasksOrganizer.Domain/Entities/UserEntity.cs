@@ -8,7 +8,7 @@ public class UserEntity : BaseEntity
     public string Name { get; set; }
 
     public virtual List<ProjectUserEntity>? ProjectUsers { get; set; }
-    public virtual List<TaskEntity>? CreatorTasks { get; set; }
-    public virtual List<TaskEntity>? PerformerTasks { get; set; }
+    public virtual List<ProblemEntity>? CreatorProblems { get; set; }
+    public virtual List<ProblemEntity>? PerformerProblems { get; set; }
     public virtual List<CommentEntity>? Comments { get; set; }
 }

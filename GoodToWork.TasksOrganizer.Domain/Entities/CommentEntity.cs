@@ -6,7 +6,7 @@ public class CommentEntity : BaseEntity
 {
     public Guid Id { get; set; }
 
-    public Guid TaskId { get; set; }
+    public Guid ProblemId { get; set; }
     public Guid CreatorId { get; set; }
 
     public string Comment { get; set; }
@@ -15,5 +15,5 @@ public class CommentEntity : BaseEntity
     
 
     public virtual UserEntity? Creator { get; set; }
-    public virtual TaskEntity? Task { get; set; }
+    public virtual ProblemEntity? Problem { get; set; }
 }

@@ -11,5 +11,5 @@ public class ProjectEntity : BaseEntity
     public DateTime Created { get; set; }
 
     public virtual List<ProjectUserEntity>? ProjectUsers { get; set; }
-    public virtual List<TaskEntity>? Tasks { get; set; }
+    public virtual List<ProblemEntity>? Problems { get; set; }
 }

@@ -2,7 +2,7 @@
 
 namespace GoodToWork.TasksOrganizer.Domain.Entities;
 
-public class TaskEntity : BaseEntity
+public class ProblemEntity : BaseEntity
 {
     public Guid Id { get; set; }
 
