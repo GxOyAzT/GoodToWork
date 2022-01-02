@@ -1,5 +1,6 @@
 ﻿using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
 using GoodToWork.TasksOrganizer.Domain.Entities;
+using GoodToWork.TasksOrganizer.Domain.Enums;
 
 namespace GoodToWork.TasksOrganizer.Application.Builders.Entities.Problem;
 
@@ -18,7 +19,10 @@ public class ProblemEntityBuilder :
     private ProblemEntityBuilder(ICurrentDateTime currentDateTime)
     {
         _currentDateTime = currentDateTime;
-        Problem = new ProblemEntity();
+        Problem = new ProblemEntity()
+        {
+            Statuses = new List<StatusEntity>()
+        };
     }
         
     public static IWithTitle Create(ICurrentDateTime currentDateTime)
@@ -29,6 +33,7 @@ public class ProblemEntityBuilder :
     public ProblemEntity Build()
     {
         Problem.Created = _currentDateTime.CurrentDateTime;
+        Problem.Statuses?.Add(new StatusEntity() { Status = ProblemStatusEnum.Created });
         return Problem;
     }
         

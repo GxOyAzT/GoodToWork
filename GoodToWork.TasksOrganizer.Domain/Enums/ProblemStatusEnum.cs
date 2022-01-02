@@ -1,6 +1,6 @@
 ﻿namespace GoodToWork.TasksOrganizer.Domain.Enums;
 
-public enum TaskStatusEnum
+public enum ProblemStatusEnum
 {
     Created,
     Noticed,
