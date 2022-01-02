@@ -31,6 +31,7 @@ public class ProblemEntityBuilderTests
         Assert.Equal(Guid.Parse("00000000-0000-0000-0000-000000000003"), problemEntity.CreatorId);
         Assert.Single(problemEntity.Statuses);
         Assert.Equal(ProblemStatusEnum.Created, problemEntity.Statuses[0].Status);
+        Assert.Equal(new DateTime(2021, 5, 11), problemEntity.Statuses[0].Updated);
         Assert.Equal(new DateTime(2021, 5, 11), problemEntity.Created);
     }
 }

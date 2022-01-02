@@ -33,7 +33,11 @@ public class ProblemEntityBuilder :
     public ProblemEntity Build()
     {
         Problem.Created = _currentDateTime.CurrentDateTime;
-        Problem.Statuses?.Add(new StatusEntity() { Status = ProblemStatusEnum.Created });
+        Problem.Statuses?.Add(new StatusEntity()
+        {
+            Status = ProblemStatusEnum.Created,
+            Updated = _currentDateTime.CurrentDateTime
+        });
         return Problem;
     }
         
