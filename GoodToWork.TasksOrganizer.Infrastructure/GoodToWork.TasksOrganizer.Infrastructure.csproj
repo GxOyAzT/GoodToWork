@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GoodToWork.TasksOrganizer.Application\GoodToWork.TasksOrganizer.Application.csproj" />
-    <ProjectReference Include="..\GoodToWork.TasksOrganizer.Persistance\GoodToWork.TasksOrganizer.Persistance.csproj" />
   </ItemGroup>
 
     <ItemGroup>
@@ -21,6 +20,17 @@
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
 			<_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
 		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Persistance\Repositories\AppRepo\" />
+	  <Folder Include="Persistance\Repositories\Project\" />
+	  <Folder Include="Persistance\Repositories\Shared\" />
+	  <Folder Include="Persistance\Repositories\User\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
 	</ItemGroup>
 	
 </Project>
