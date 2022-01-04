@@ -6,5 +6,6 @@ public enum ProblemStatusEnum
     Noticed,
     InProgress,
     Finished,
+    ToFix,
     Closed,
 }

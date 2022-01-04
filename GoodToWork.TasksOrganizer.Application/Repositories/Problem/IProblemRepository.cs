@@ -5,4 +5,5 @@ namespace GoodToWork.TasksOrganizer.Application.Persistance.Repositories.Problem
 
 public interface IProblemRepository : IBaseRepository<ProblemEntity>
 {
+    Task<ProblemEntity> FindProblemWithStatuses(Func<ProblemEntity, bool> filter);
 }
