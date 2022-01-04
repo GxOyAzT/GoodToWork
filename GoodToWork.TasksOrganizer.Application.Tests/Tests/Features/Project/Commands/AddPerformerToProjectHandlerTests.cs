@@ -53,6 +53,7 @@ public class AddPerformerToProjectHandlerTests
         await Assert.ThrowsAsync<CannnotFindException>(() => testedUnit.Handle(request, new CancellationToken()));
 
         mockedAppRepository.Verify(v => v.Projects.Add(It.IsAny<ProjectEntity>()), Times.Never);
+        mockedAppRepository.Verify(v => v.SaveChanges(), Times.Never);
     }
 
     [Fact]
@@ -71,6 +72,7 @@ public class AddPerformerToProjectHandlerTests
         await Assert.ThrowsAsync<NoAccessException>(() => testedUnit.Handle(request, new CancellationToken()));
 
         mockedAppRepository.Verify(v => v.Projects.Add(It.IsAny<ProjectEntity>()), Times.Never);
+        mockedAppRepository.Verify(v => v.SaveChanges(), Times.Never);
     }
 
     [Fact]
@@ -89,6 +91,7 @@ public class AddPerformerToProjectHandlerTests
         await Assert.ThrowsAsync<DomainException>(() => testedUnit.Handle(request, new CancellationToken()));
 
         mockedAppRepository.Verify(v => v.Projects.Add(It.IsAny<ProjectEntity>()), Times.Never);
+        mockedAppRepository.Verify(v => v.SaveChanges(), Times.Never);
     }
 
     [Fact]
@@ -110,6 +113,7 @@ public class AddPerformerToProjectHandlerTests
         await Assert.ThrowsAsync<DomainException>(() => testedUnit.Handle(request, new CancellationToken()));
 
         mockedAppRepository.Verify(v => v.Projects.Add(It.IsAny<ProjectEntity>()), Times.Never);
+        mockedAppRepository.Verify(v => v.SaveChanges(), Times.Never);
     }
 
     [Fact]
@@ -135,5 +139,6 @@ public class AddPerformerToProjectHandlerTests
             input.Id == Guid.Parse("00000000-0000-0000-0001-000000000000") &&
             input.ProjectUsers.FirstOrDefault(pu => pu.UserId == Guid.Parse("00000000-0000-0000-0000-000000000033")) != null
         )), Times.Once);
+        mockedAppRepository.Verify(v => v.SaveChanges(), Times.Once);
     }
 }

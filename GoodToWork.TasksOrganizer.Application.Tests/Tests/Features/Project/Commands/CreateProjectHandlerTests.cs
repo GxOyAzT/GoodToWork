@@ -29,6 +29,8 @@ public class CreateProjectHandlerTests
         var testedUnit = new CreateProjectHandler(mockedMediator.Object, mockedAppRepo.Object);
 
         await Assert.ThrowsAsync<ValidationFailedError>(() => testedUnit.Handle(input, new CancellationToken()));
+
+        mockedAppRepo.Verify(v => v.SaveChanges(), Times.Never());
     }
 
     [Fact]
@@ -51,5 +53,6 @@ public class CreateProjectHandlerTests
         await testedUnit.Handle(input, new CancellationToken());
 
         mockedProjectRepo.Verify(v => v.Add(It.Is<ProjectEntity>(x => x.Name == "valid_name" && x.Description == "valid_description")), Times.Once);
+        mockedAppRepo.Verify(v => v.SaveChanges(), Times.Once());
     }
 }

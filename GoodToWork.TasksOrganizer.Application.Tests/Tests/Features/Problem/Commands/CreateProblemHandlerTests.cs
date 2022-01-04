@@ -36,6 +36,7 @@ public class CreateProblemHandlerTests
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.Empty, Guid.Empty), new CancellationToken()));
 
         mockedAppRepo.Verify(m => m.Problems, Times.Never());
+        mockedAppRepo.Verify(m => m.SaveChanges(), Times.Never());
     }
 
     [Fact]
@@ -58,6 +59,7 @@ public class CreateProblemHandlerTests
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.Empty, Guid.Empty), new CancellationToken()));
 
         mockedAppRepo.Verify(m => m.Problems, Times.Never());
+        mockedAppRepo.Verify(m => m.SaveChanges(), Times.Never());
     }
 
     [Fact]
@@ -85,5 +87,6 @@ public class CreateProblemHandlerTests
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.Empty, Guid.Empty), new CancellationToken());
 
         mockedAppRepo.Verify(m => m.Problems.Add(It.IsAny<ProblemEntity>()), Times.Once());
+        mockedAppRepo.Verify(m => m.SaveChanges(), Times.Once());
     }
 }

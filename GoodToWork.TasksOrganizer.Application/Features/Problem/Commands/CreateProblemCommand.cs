@@ -56,6 +56,8 @@ public class CreateProblemHandler : IRequestHandler<CreateProblemCommand, Guid>
 
         var insertedProblem = await _appRepository.Problems.Add(newProblem);
 
+        await _appRepository.SaveChanges();
+
         return insertedProblem.Id;
     }
 }

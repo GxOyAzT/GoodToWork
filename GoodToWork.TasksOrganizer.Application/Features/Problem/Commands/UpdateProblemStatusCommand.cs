@@ -62,6 +62,8 @@ public sealed class UpdateProblemStatusHandler : IRequestHandler<UpdateProblemSt
 
         await _appRepository.Problems.Update(problem);
 
+        await _appRepository.SaveChanges();
+
         return Unit.Value;
     }
 }

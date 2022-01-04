@@ -11,4 +11,5 @@ public interface IAppRepository
     IProjectRepository Projects { get; }
     IProjectUserRepository ProjectUsers { get; }
     IProblemRepository Problems { get; }
+    Task SaveChanges();
 }
