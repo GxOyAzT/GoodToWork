@@ -1,5 +1,6 @@
 ﻿using GoodToWork.TasksOrganizer.Application.Builders.Entities.Problem;
 using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
+using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Domain.Enums;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
@@ -10,7 +11,7 @@ using System.Net;
 
 namespace GoodToWork.TasksOrganizer.Application.Features.TaskFeat.Commands;
 
-public sealed record CreateProblemCommand(string Title, string Description, Guid ProjectId, Guid PerformerId, Guid SenderId) : IRequest<Guid>;
+public sealed record CreateProblemCommand(string Title, string Description, Guid ProjectId, Guid PerformerId, Guid SenderId) : BaseSenderIdRequest(SenderId), IRequest<Guid>;
 
 public class CreateProblemHandler : IRequestHandler<CreateProblemCommand, Guid>
 {

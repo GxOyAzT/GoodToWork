@@ -1,4 +1,5 @@
 ﻿using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
+using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Enums;
@@ -9,7 +10,7 @@ using System.Net;
 
 namespace GoodToWork.TasksOrganizer.Application.Features.Problem.Commands;
 
-public sealed record UpdateProblemStatusCommand(Guid ProblemId, ProblemStatusEnum ProblemStatus, Guid SenderId) : IRequest<Unit>;
+public sealed record UpdateProblemStatusCommand(Guid ProblemId, ProblemStatusEnum ProblemStatus, Guid SenderId) : BaseSenderIdRequest(SenderId), IRequest<Unit>;
 
 public sealed class UpdateProblemStatusHandler : IRequestHandler<UpdateProblemStatusCommand, Unit>
 {

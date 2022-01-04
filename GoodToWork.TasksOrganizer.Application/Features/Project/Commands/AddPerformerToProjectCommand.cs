@@ -1,4 +1,5 @@
-﻿using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
+﻿using GoodToWork.TasksOrganizer.Application.Features.Shared;
+using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Enums;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
@@ -9,7 +10,7 @@ using System.Net;
 
 namespace GoodToWork.TasksOrganizer.Application.Features.Project.Commands;
 
-public sealed record AddPerformerToProjectCommand(Guid ProjectId, Guid NewPerformerId, Guid SenderId) : IRequest<Unit>;
+public sealed record AddPerformerToProjectCommand(Guid ProjectId, Guid NewPerformerId, Guid SenderId) : BaseSenderIdRequest(SenderId), IRequest<Unit>;
 
 public class AddPerformerToProjectHandler : IRequestHandler<AddPerformerToProjectCommand, Unit>
 {
