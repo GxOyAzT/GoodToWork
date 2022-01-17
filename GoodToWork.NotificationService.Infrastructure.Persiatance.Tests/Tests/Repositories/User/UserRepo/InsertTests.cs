@@ -2,7 +2,7 @@
 using GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.Mocked.AppDatabaseConfiguration;
 using GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.Mocked.DatabaseReset;
 using GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.Mocked.UserCollection;
-using GoodToWork.NotificationService.Infrastructure.Persistance.Repositories.User;
+using GoodToWork.NotificationService.Infrastructure.Persistance.Repositories.Shared;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -18,7 +18,7 @@ public class InsertTests
 
         var mockedAppDatabaseConfiguration = MockAppDatabaseConfiguration.Mock();
 
-        var testedUnit = new UserRepository(mockedAppDatabaseConfiguration.Object);
+        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object, mockedAppDatabaseConfiguration.Object.UsersCollectionName);
 
         var userEntity = new UserEntity()
         {

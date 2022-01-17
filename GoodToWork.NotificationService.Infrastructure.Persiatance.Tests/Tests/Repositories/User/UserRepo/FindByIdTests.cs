@@ -2,7 +2,7 @@
 using GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.Mocked.AppDatabaseConfiguration;
 using GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.Mocked.DatabaseReset;
 using GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.Mocked.UserCollection;
-using GoodToWork.NotificationService.Infrastructure.Persistance.Repositories.User;
+using GoodToWork.NotificationService.Infrastructure.Persistance.Repositories.Shared;
 using System;
 using System.Threading.Tasks;
 using Xunit;
@@ -19,7 +19,7 @@ public class FindByIdTests
 
         var mockedAppDatabaseConfiguration = MockAppDatabaseConfiguration.Mock();
 
-        var testedUnit = new UserRepository(mockedAppDatabaseConfiguration.Object);
+        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object, mockedAppDatabaseConfiguration.Object.UsersCollectionName);
 
         var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000001"));
 
@@ -34,7 +34,7 @@ public class FindByIdTests
 
         var mockedAppDatabaseConfiguration = MockAppDatabaseConfiguration.Mock();
 
-        var testedUnit = new UserRepository(mockedAppDatabaseConfiguration.Object);
+        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object, mockedAppDatabaseConfiguration.Object.UsersCollectionName);
 
         var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000004"));
 
@@ -49,7 +49,7 @@ public class FindByIdTests
 
         var mockedAppDatabaseConfiguration = MockAppDatabaseConfiguration.Mock();
 
-        var testedUnit = new UserRepository(mockedAppDatabaseConfiguration.Object);
+        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object, mockedAppDatabaseConfiguration.Object.UsersCollectionName);
 
         var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000001"));
 
