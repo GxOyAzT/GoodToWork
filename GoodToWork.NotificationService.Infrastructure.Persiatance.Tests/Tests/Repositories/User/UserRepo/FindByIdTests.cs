@@ -21,7 +21,7 @@ public class FindByIdTests
 
         var testedUnit = new UserRepository(mockedAppDatabaseConfiguration.Object);
 
-        var user = await testedUnit.FindById(Guid.Parse("00000000-0000-0000-0000-000000000001"));
+        var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000001"));
 
         Assert.Equal("user1@test.com", user.Email);
     }
@@ -36,7 +36,7 @@ public class FindByIdTests
 
         var testedUnit = new UserRepository(mockedAppDatabaseConfiguration.Object);
 
-        var user = await testedUnit.FindById(Guid.Parse("00000000-0000-0000-0000-000000000004"));
+        var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000004"));
 
         Assert.Null(user);
     }
@@ -51,7 +51,7 @@ public class FindByIdTests
 
         var testedUnit = new UserRepository(mockedAppDatabaseConfiguration.Object);
 
-        var user = await testedUnit.FindById(Guid.Parse("00000000-0000-0000-0000-000000000001"));
+        var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000001"));
 
         Assert.Null(user);
     }

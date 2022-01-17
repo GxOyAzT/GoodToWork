@@ -1,11 +1,11 @@
-﻿using GoodToWork.NotificationService.Application.Repositories.User;
+﻿using GoodToWork.NotificationService.Application.Repositories;
 using GoodToWork.NotificationService.Domain.Entities;
 using GoodToWork.NotificationService.Infrastructure.Persistance.Configuration;
 using MongoDB.Driver;
 
 namespace GoodToWork.NotificationService.Infrastructure.Persistance.Repositories.User;
 
-internal class UserRepository : IUserRepository
+internal class UserRepository : ISharedRepository<UserEntity>
 {
     private readonly IMongoCollection<UserEntity> _users;
 
@@ -18,9 +18,24 @@ internal class UserRepository : IUserRepository
         _users = database.GetCollection<UserEntity>(configuration.UsersCollectionName);
     }
 
-    public async Task<UserEntity> FindById(Guid userId) =>
-        (await _users.FindAsync(user => user.Id == userId)).FirstOrDefault();
+    public Task Delete(UserEntity entity)
+    {
+        throw new NotImplementedException();
+    }
 
-    public async Task Insert(UserEntity user) =>
-        await _users.InsertOneAsync(user);
+    public async Task<UserEntity> Find(Guid id) =>
+        await (await _users.FindAsync(u => u.Id == id)).FirstOrDefaultAsync();
+
+    public Task<List<UserEntity>> Get()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task Insert(UserEntity entity) =>
+        await _users.InsertOneAsync(entity);
+
+    public Task Update(UserEntity entity)
+    {
+        throw new NotImplementedException();
+    }
 }
