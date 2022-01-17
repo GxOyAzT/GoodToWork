@@ -27,7 +27,7 @@ public class CreateEmailHandlerTests
 
         var mockedCurrentDateTime = CurrentDateTimeMocked.MockedCurrentDateTime();
 
-        mockedUserRepo.Setup(mur => mur.Find(It.IsAny<Func<UserEntity, bool>>()))
+        mockedUserRepo.Setup(mur => mur.FindById(It.IsAny<Guid>()))
             .Returns(Task.FromResult((UserEntity)null));
 
         var createEmailCommand = new CreateEmailCommand(Guid.Empty, "Title", "Contents");
@@ -52,7 +52,7 @@ public class CreateEmailHandlerTests
 
         var mockedCurrentDateTime = CurrentDateTimeMocked.MockedCurrentDateTime();
 
-        mockedUserRepo.Setup(mur => mur.Find(It.IsAny<Func<UserEntity, bool>>()))
+        mockedUserRepo.Setup(mur => mur.FindById(It.IsAny<Guid>()))
             .Returns(Task.FromResult(new UserEntity() { Id = Guid.Parse("00000000-0000-0000-0000-000000000001") }));
 
         var createEmailCommand = new CreateEmailCommand(Guid.Empty, "Title", "Contents");

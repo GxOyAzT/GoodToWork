@@ -4,5 +4,5 @@ namespace GoodToWork.NotificationService.Application.Repositories.User;
 
 public interface IUserRepository
 {
-    Task<UserEntity> Find(Func<UserEntity, bool> filter);
+    Task<UserEntity> FindById(Guid userId);
 }
