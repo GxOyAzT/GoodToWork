@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NotificationServ
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1E01E28F-4AA0-489A-9319-067B45AA075A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.NoticicationService.Application.Tests", "GoodToWork.NoticicationService.Application.Tests\GoodToWork.NoticicationService.Application.Tests.csproj", "{8396D7F3-BEFF-49DA-9718-728F3A24E380}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NoticicationService.Application.Tests", "GoodToWork.NoticicationService.Application.Tests\GoodToWork.NoticicationService.Application.Tests.csproj", "{8396D7F3-BEFF-49DA-9718-728F3A24E380}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NotificationService.Infrastructure.Persistance", "GoodToWork.NotificationService.Infrastructure.Persistance\GoodToWork.NotificationService.Infrastructure.Persistance.csproj", "{6FB9C0E3-2509-4EED-96D6-6575035B69B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.NotificationService.Infrastructure.Persiatance.Tests", "GoodToWork.NotificationService.Infrastructure.Persiatance.Tests\GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.csproj", "{0EE3F582-4E02-497C-A055-3F24299AB9D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{8396D7F3-BEFF-49DA-9718-728F3A24E380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8396D7F3-BEFF-49DA-9718-728F3A24E380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8396D7F3-BEFF-49DA-9718-728F3A24E380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB9C0E3-2509-4EED-96D6-6575035B69B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB9C0E3-2509-4EED-96D6-6575035B69B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB9C0E3-2509-4EED-96D6-6575035B69B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB9C0E3-2509-4EED-96D6-6575035B69B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE3F582-4E02-497C-A055-3F24299AB9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE3F582-4E02-497C-A055-3F24299AB9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE3F582-4E02-497C-A055-3F24299AB9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE3F582-4E02-497C-A055-3F24299AB9D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +55,8 @@ Global
 		{A8EF63A1-40D7-42D9-93AF-6D0CE9CAA4B8} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
 		{1E01E28F-4AA0-489A-9319-067B45AA075A} = {DAF40315-0971-4B20-804A-32C67A09DBF5}
 		{8396D7F3-BEFF-49DA-9718-728F3A24E380} = {1E01E28F-4AA0-489A-9319-067B45AA075A}
+		{6FB9C0E3-2509-4EED-96D6-6575035B69B1} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
+		{0EE3F582-4E02-497C-A055-3F24299AB9D8} = {1E01E28F-4AA0-489A-9319-067B45AA075A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B961D32-41B4-42A3-9E1C-0A2DA9F9450B}
