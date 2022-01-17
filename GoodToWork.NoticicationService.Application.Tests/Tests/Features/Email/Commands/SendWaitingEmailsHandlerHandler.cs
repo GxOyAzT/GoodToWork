@@ -1,5 +1,4 @@
-﻿using GoodToWork.NotificationService.Application.Repositories.Email;
-using GoodToWork.NotificationService.Application.Repositories;
+﻿using GoodToWork.NotificationService.Application.Repositories;
 using Moq;
 using System.Threading.Tasks;
 using Xunit;
@@ -18,12 +17,12 @@ public class SendWaitingEmailsHandlerHandler
     public async Task NoEmailsToSend()
     {
         var mockedAppRepo = new Mock<IAppRepository>();
-        var mockedEmailsRepo = new Mock<IEmailRepository>();
+        var mockedEmailsRepo = new Mock<ISharedRepository<EmailEntity>>();
         var mockedEmailSender = new Mock<IEmailSender>();
 
         mockedAppRepo.Setup(mar => mar.Emails).Returns(mockedEmailsRepo.Object);
 
-        mockedEmailsRepo.Setup(mer => mer.Get(It.IsAny<Func<EmailEntity, bool>>()))
+        mockedEmailsRepo.Setup(mer => mer.Get())
             .Returns(Task.FromResult(new List<EmailEntity>()));
 
         var testedUnit = new SendWaitingEmailsHandler(mockedAppRepo.Object, mockedEmailSender.Object);
@@ -38,12 +37,12 @@ public class SendWaitingEmailsHandlerHandler
     public async Task OneEmailToSend()
     {
         var mockedAppRepo = new Mock<IAppRepository>();
-        var mockedEmailsRepo = new Mock<IEmailRepository>();
+        var mockedEmailsRepo = new Mock<ISharedRepository<EmailEntity>>();
         var mockedEmailSender = new Mock<IEmailSender>();
 
         mockedAppRepo.Setup(mar => mar.Emails).Returns(mockedEmailsRepo.Object);
 
-        mockedEmailsRepo.Setup(mer => mer.Get(It.IsAny<Func<EmailEntity, bool>>()))
+        mockedEmailsRepo.Setup(mer => mer.Get())
             .Returns(Task.FromResult(new List<EmailEntity>()
             {
                 new EmailEntity()

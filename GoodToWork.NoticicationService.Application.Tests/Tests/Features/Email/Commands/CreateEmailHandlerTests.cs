@@ -1,8 +1,6 @@
 ﻿using GoodToWork.NoticicationService.Application.Tests.Mocked.CurrentDateTime;
 using GoodToWork.NotificationService.Application.Features.Email.Commands;
 using GoodToWork.NotificationService.Application.Repositories;
-using GoodToWork.NotificationService.Application.Repositories.Email;
-using GoodToWork.NotificationService.Application.Repositories.User;
 using GoodToWork.NotificationService.Domain.Entities;
 using Moq;
 using System;
@@ -19,15 +17,15 @@ public class CreateEmailHandlerTests
     public async Task CannotFindRecipient()
     {
         var mockedAppRepo = new Mock<IAppRepository>();
-        var mockedUserRepo = new Mock<IUserRepository>();
-        var mockedEmailsRepo = new Mock<IEmailRepository>();
+        var mockedUserRepo = new Mock<ISharedRepository<UserEntity>>();
+        var mockedEmailsRepo = new Mock<ISharedRepository<EmailEntity>>();
 
         mockedAppRepo.Setup(mar => mar.Users).Returns(mockedUserRepo.Object);
         mockedAppRepo.Setup(mer => mer.Emails).Returns(mockedEmailsRepo.Object);
 
         var mockedCurrentDateTime = CurrentDateTimeMocked.MockedCurrentDateTime();
 
-        mockedUserRepo.Setup(mur => mur.Find(It.IsAny<Func<UserEntity, bool>>()))
+        mockedUserRepo.Setup(mur => mur.Find(It.IsAny<Guid>()))
             .Returns(Task.FromResult((UserEntity)null));
 
         var createEmailCommand = new CreateEmailCommand(Guid.Empty, "Title", "Contents");
@@ -44,15 +42,15 @@ public class CreateEmailHandlerTests
     public async Task CorrectInsert()
     {
         var mockedAppRepo = new Mock<IAppRepository>();
-        var mockedUserRepo = new Mock<IUserRepository>();
-        var mockedEmailsRepo = new Mock<IEmailRepository>();
+        var mockedUserRepo = new Mock<ISharedRepository<UserEntity>>();
+        var mockedEmailsRepo = new Mock<ISharedRepository<EmailEntity>>();
 
         mockedAppRepo.Setup(mar => mar.Users).Returns(mockedUserRepo.Object);
         mockedAppRepo.Setup(mar => mar.Emails).Returns(mockedEmailsRepo.Object);
 
         var mockedCurrentDateTime = CurrentDateTimeMocked.MockedCurrentDateTime();
 
-        mockedUserRepo.Setup(mur => mur.Find(It.IsAny<Func<UserEntity, bool>>()))
+        mockedUserRepo.Setup(mur => mur.Find(It.IsAny<Guid>()))
             .Returns(Task.FromResult(new UserEntity() { Id = Guid.Parse("00000000-0000-0000-0000-000000000001") }));
 
         var createEmailCommand = new CreateEmailCommand(Guid.Empty, "Title", "Contents");

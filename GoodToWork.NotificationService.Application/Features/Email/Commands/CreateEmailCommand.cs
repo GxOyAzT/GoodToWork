@@ -24,7 +24,7 @@ public sealed class CreateEmailHandler : IRequestHandler<CreateEmailCommand, Uni
 
     public async Task<Unit> Handle(CreateEmailCommand request, CancellationToken cancellationToken)
     {
-        var recipient = await _appRepository.Users.Find(u => u.Id == request.RecipientId);
+        var recipient = await _appRepository.Users.Find(request.RecipientId);
 
         if (recipient == null)
         {

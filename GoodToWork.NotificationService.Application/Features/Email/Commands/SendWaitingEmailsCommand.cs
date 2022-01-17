@@ -21,7 +21,7 @@ public sealed class SendWaitingEmailsHandler : IRequestHandler<SendWaitingEmails
 
     public async Task<Unit> Handle(SendWaitingEmailsCommand request, CancellationToken cancellationToken)
     {
-        var emails = await _appRepository.Emails.Get(e => !e.WasSent);
+        var emails = (await _appRepository.Emails.Get()).Where(e => !e.WasSent);
 
         foreach(var email in emails)
         {

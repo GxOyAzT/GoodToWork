@@ -1,10 +1,9 @@
-﻿using GoodToWork.NotificationService.Application.Repositories.Email;
-using GoodToWork.NotificationService.Application.Repositories.User;
+﻿using GoodToWork.NotificationService.Domain.Entities;
 
 namespace GoodToWork.NotificationService.Application.Repositories;
 
 public interface IAppRepository
 {
-    IEmailRepository Emails { get; }
-    IUserRepository Users { get; }
+    ISharedRepository<EmailEntity> Emails { get; }
+    ISharedRepository<UserEntity> Users { get; }
 }
