@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NoticicationServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NotificationService.Infrastructure.Persistance", "GoodToWork.NotificationService.Infrastructure.Persistance\GoodToWork.NotificationService.Infrastructure.Persistance.csproj", "{6FB9C0E3-2509-4EED-96D6-6575035B69B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.NotificationService.Infrastructure.Persiatance.Tests", "GoodToWork.NotificationService.Infrastructure.Persiatance.Tests\GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.csproj", "{0EE3F582-4E02-497C-A055-3F24299AB9D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NotificationService.Infrastructure.Persiatance.Tests", "GoodToWork.NotificationService.Infrastructure.Persiatance.Tests\GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.csproj", "{0EE3F582-4E02-497C-A055-3F24299AB9D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.NotificationService.API", "GoodToWork.NotificationService.API\GoodToWork.NotificationService.API.csproj", "{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.NotificationService.Infrastructure.Emailer", "GoodToWork.NotificationService.Infrastructure.Emailer\GoodToWork.NotificationService.Infrastructure.Emailer.csproj", "{88CCEE96-E599-4782-AA12-23230E2FAB8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{0EE3F582-4E02-497C-A055-3F24299AB9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE3F582-4E02-497C-A055-3F24299AB9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE3F582-4E02-497C-A055-3F24299AB9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88CCEE96-E599-4782-AA12-23230E2FAB8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88CCEE96-E599-4782-AA12-23230E2FAB8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88CCEE96-E599-4782-AA12-23230E2FAB8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88CCEE96-E599-4782-AA12-23230E2FAB8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +69,8 @@ Global
 		{8396D7F3-BEFF-49DA-9718-728F3A24E380} = {1E01E28F-4AA0-489A-9319-067B45AA075A}
 		{6FB9C0E3-2509-4EED-96D6-6575035B69B1} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
 		{0EE3F582-4E02-497C-A055-3F24299AB9D8} = {1E01E28F-4AA0-489A-9319-067B45AA075A}
+		{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
+		{88CCEE96-E599-4782-AA12-23230E2FAB8B} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B961D32-41B4-42A3-9E1C-0A2DA9F9450B}

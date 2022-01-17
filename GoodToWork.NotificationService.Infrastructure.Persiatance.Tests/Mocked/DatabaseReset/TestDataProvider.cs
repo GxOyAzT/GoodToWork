@@ -9,12 +9,11 @@ internal class TestDataProvider<TCollection>
 {
     private readonly IMongoCollection<TCollection> _collection;
 
-    public TestDataProvider(string collectionName)
+    public TestDataProvider()
     {
         var client = new MongoClient("mongodb://localhost:27017");
         var database = client.GetDatabase("NotificationServiceTest");
-
-        _collection = database.GetCollection<TCollection>(collectionName);
+        _collection = database.GetCollection<TCollection>(typeof(TCollection).Name);
     }
 
     public async Task ResetCollection(List<TCollection> entities)

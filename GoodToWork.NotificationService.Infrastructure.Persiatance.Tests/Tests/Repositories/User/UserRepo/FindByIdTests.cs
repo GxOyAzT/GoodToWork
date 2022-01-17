@@ -14,12 +14,12 @@ public class FindByIdTests
     [Fact]
     public async Task Find()
     {
-        var testDataProvider = new TestDataProvider<UserEntity>("Users");
+        var testDataProvider = new TestDataProvider<UserEntity>();
         await testDataProvider.ResetCollection(MockUserEntities.Single);
 
         var mockedAppDatabaseConfiguration = MockAppDatabaseConfiguration.Mock();
 
-        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object, mockedAppDatabaseConfiguration.Object.UsersCollectionName);
+        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object);
 
         var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000001"));
 
@@ -29,12 +29,12 @@ public class FindByIdTests
     [Fact]
     public async Task UserOfIdNotExists()
     {
-        var testDataProvider = new TestDataProvider<UserEntity>("Users");
+        var testDataProvider = new TestDataProvider<UserEntity>();
         await testDataProvider.ResetCollection(MockUserEntities.Three);
 
         var mockedAppDatabaseConfiguration = MockAppDatabaseConfiguration.Mock();
 
-        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object, mockedAppDatabaseConfiguration.Object.UsersCollectionName);
+        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object);
 
         var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000004"));
 
@@ -44,12 +44,12 @@ public class FindByIdTests
     [Fact]
     public async Task EmptyCollection()
     {
-        var testDataProvider = new TestDataProvider<UserEntity>("Users");
+        var testDataProvider = new TestDataProvider<UserEntity>();
         await testDataProvider.ResetCollection(MockUserEntities.Empty);
 
         var mockedAppDatabaseConfiguration = MockAppDatabaseConfiguration.Mock();
 
-        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object, mockedAppDatabaseConfiguration.Object.UsersCollectionName);
+        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object);
 
         var user = await testedUnit.Find(Guid.Parse("00000000-0000-0000-0000-000000000001"));
 

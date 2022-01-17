@@ -11,7 +11,6 @@ internal class MockAppDatabaseConfiguration
 
         mockedAppDatabaseConfiguration.Setup(madc => madc.ConnectionString).Returns("mongodb://localhost:27017");
         mockedAppDatabaseConfiguration.Setup(madc => madc.DatabaseName).Returns("NotificationServiceTest");
-        mockedAppDatabaseConfiguration.Setup(madc => madc.UsersCollectionName).Returns("Users");
 
         return mockedAppDatabaseConfiguration;
     }

@@ -11,13 +11,12 @@ public class SharedRepository<TEntity> : ISharedRepository<TEntity>
     private readonly IMongoCollection<TEntity> _collection;
 
     public SharedRepository(
-        IAppDatabaseConfiguration configuration,
-        string collectionName)
+        IAppDatabaseConfiguration configuration)
     {
         var client = new MongoClient(configuration.ConnectionString);
         var database = client.GetDatabase(configuration.DatabaseName);
 
-        _collection = database.GetCollection<TEntity>(collectionName);
+        _collection = database.GetCollection<TEntity>(typeof(TEntity).Name);
     }
 
     public async Task Delete(TEntity entity) =>

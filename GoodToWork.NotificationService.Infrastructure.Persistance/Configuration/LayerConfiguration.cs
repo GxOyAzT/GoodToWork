@@ -10,7 +10,7 @@ public static class LayerConfiguration
 {
     public static IServiceCollection AddPersistanceLayer(this IServiceCollection services, IAppDatabaseConfiguration appDatabaseConfiguration)
     {
-        services.AddSingleton(appDatabaseConfiguration);
+        services.AddSingleton<IAppDatabaseConfiguration>(appDatabaseConfiguration);
 
         services.AddScoped<ISharedRepository<UserEntity>, SharedRepository<UserEntity>>();
         services.AddScoped<ISharedRepository<EmailEntity>, SharedRepository<EmailEntity>>();

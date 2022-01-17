@@ -7,13 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="10.0.1" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GoodToWork.NotificationService.Domain\GoodToWork.NotificationService.Domain.csproj" />
+    <ProjectReference Include="..\GoodToWork.NotificationService.Application\GoodToWork.NotificationService.Application.csproj" />
   </ItemGroup>
 
 </Project>

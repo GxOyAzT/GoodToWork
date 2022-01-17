@@ -13,12 +13,12 @@ public class InsertTests
     [Fact]
     public async Task CorrectInsert()
     {
-        var testDataProvider = new TestDataProvider<UserEntity>("Users");
+        var testDataProvider = new TestDataProvider<UserEntity>();
         await testDataProvider.ResetCollection(MockUserEntities.Empty);
 
         var mockedAppDatabaseConfiguration = MockAppDatabaseConfiguration.Mock();
 
-        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object, mockedAppDatabaseConfiguration.Object.UsersCollectionName);
+        var testedUnit = new SharedRepository<UserEntity>(mockedAppDatabaseConfiguration.Object);
 
         var userEntity = new UserEntity()
         {
