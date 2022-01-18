@@ -1,3 +1,3 @@
 ﻿namespace GoodToWork.NotificationService.Application;
 
-internal sealed class ApplicationEntryPoint { }
+public sealed class ApplicationEntryPoint { }

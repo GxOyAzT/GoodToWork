@@ -19,9 +19,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NotificationServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NotificationService.Infrastructure.Persiatance.Tests", "GoodToWork.NotificationService.Infrastructure.Persiatance.Tests\GoodToWork.NotificationService.Infrastructure.Persiatance.Tests.csproj", "{0EE3F582-4E02-497C-A055-3F24299AB9D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.NotificationService.API", "GoodToWork.NotificationService.API\GoodToWork.NotificationService.API.csproj", "{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NotificationService.API", "GoodToWork.NotificationService.API\GoodToWork.NotificationService.API.csproj", "{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.NotificationService.Infrastructure.Emailer", "GoodToWork.NotificationService.Infrastructure.Emailer\GoodToWork.NotificationService.Infrastructure.Emailer.csproj", "{88CCEE96-E599-4782-AA12-23230E2FAB8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.NotificationService.Infrastructure.Emailer", "GoodToWork.NotificationService.Infrastructure.Emailer\GoodToWork.NotificationService.Infrastructure.Emailer.csproj", "{88CCEE96-E599-4782-AA12-23230E2FAB8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{7430E2D6-1F12-4A1A-AF09-63A6E86B3F1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBroker", "MessageBroker", "{EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.Shared.MessageBroker.DTOs", "GoodToWork.Shared.MessageBroker.DTOs\GoodToWork.Shared.MessageBroker.DTOs.csproj", "{CAA8E3EE-A8FE-4CC8-9376-4ACB4FA929C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.Shared.MessageBroker.Infrastructure", "GoodToWork.Shared.MessageBroker.Infrastructure\GoodToWork.Shared.MessageBroker.Infrastructure.csproj", "{D84D6D5B-C714-4892-A0D1-B90783D81517}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +65,14 @@ Global
 		{88CCEE96-E599-4782-AA12-23230E2FAB8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88CCEE96-E599-4782-AA12-23230E2FAB8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88CCEE96-E599-4782-AA12-23230E2FAB8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA8E3EE-A8FE-4CC8-9376-4ACB4FA929C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA8E3EE-A8FE-4CC8-9376-4ACB4FA929C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA8E3EE-A8FE-4CC8-9376-4ACB4FA929C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA8E3EE-A8FE-4CC8-9376-4ACB4FA929C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84D6D5B-C714-4892-A0D1-B90783D81517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84D6D5B-C714-4892-A0D1-B90783D81517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84D6D5B-C714-4892-A0D1-B90783D81517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84D6D5B-C714-4892-A0D1-B90783D81517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +87,9 @@ Global
 		{0EE3F582-4E02-497C-A055-3F24299AB9D8} = {1E01E28F-4AA0-489A-9319-067B45AA075A}
 		{FF1CE061-7A1E-4FB4-A8CF-F3DE34CE89C7} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
 		{88CCEE96-E599-4782-AA12-23230E2FAB8B} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
+		{EC5E2779-000B-4D3F-BC4A-7A970F7EDE76} = {7430E2D6-1F12-4A1A-AF09-63A6E86B3F1F}
+		{CAA8E3EE-A8FE-4CC8-9376-4ACB4FA929C4} = {EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}
+		{D84D6D5B-C714-4892-A0D1-B90783D81517} = {EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B961D32-41B4-42A3-9E1C-0A2DA9F9450B}

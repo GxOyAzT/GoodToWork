@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GoodToWork.NotificationService.Infrastructure.Emailer\GoodToWork.NotificationService.Infrastructure.Emailer.csproj" />
     <ProjectReference Include="..\GoodToWork.NotificationService.Infrastructure.Persistance\GoodToWork.NotificationService.Infrastructure.Persistance.csproj" />
+    <ProjectReference Include="..\GoodToWork.Shared.MessageBroker.Infrastructure\GoodToWork.Shared.MessageBroker.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
