@@ -1,4 +1,6 @@
-﻿using GoodToWork.TasksOrganizer.Application.Builders.Entities.Problem;
+﻿using GoodToWork.Shared.MessageBroker.DTOs.Email;
+using GoodToWork.TasksOrganizer.Application.Builders.Entities.Problem;
+using GoodToWork.TasksOrganizer.Application.EventSender;
 using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
 using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
@@ -18,15 +20,18 @@ public class CreateProblemHandler : IRequestHandler<CreateProblemCommand, Guid>
     private readonly ICurrentDateTime _currentDateTime;
     private readonly IMediator _mediator;
     private readonly IAppRepository _appRepository;
+    private readonly IEventSenderWrapper _eventSender;
 
     public CreateProblemHandler(
         ICurrentDateTime currentDateTime,
         IMediator mediator,
-        IAppRepository appRepository)
+        IAppRepository appRepository,
+        IEventSenderWrapper eventSender)
     {
         _currentDateTime = currentDateTime;
         _mediator = mediator;
         _appRepository = appRepository;
+        _eventSender = eventSender;
     }
 
     public async Task<Guid> Handle(CreateProblemCommand request, CancellationToken cancellationToken)
@@ -58,6 +63,14 @@ public class CreateProblemHandler : IRequestHandler<CreateProblemCommand, Guid>
         var insertedProblem = await _appRepository.Problems.Add(newProblem);
 
         await _appRepository.SaveChanges();
+
+        if (newProblem.PerformerId != Guid.Empty)
+            await _eventSender.Send(new EmailCreatedEvent()
+            {
+                RecipientId = newProblem.PerformerId,
+                Title = $"You have new task.",
+                Contents = $"New task of title {newProblem.Title} was assigned to you."
+            });
 
         return insertedProblem.Id;
     }

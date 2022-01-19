@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GoodToWork.Shared.MessageBroker.Application\GoodToWork.Shared.MessageBroker.Application.csproj" />
     <ProjectReference Include="..\GoodToWork.TasksOrganizer.Domain\GoodToWork.TasksOrganizer.Domain.csproj" />
   </ItemGroup>
 
