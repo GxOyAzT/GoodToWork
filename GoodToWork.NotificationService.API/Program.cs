@@ -1,7 +1,6 @@
 using GoodToWork.NotificationService.API.HostedServices;
 using GoodToWork.NotificationService.Application;
 using GoodToWork.NotificationService.Application.Configuration;
-using GoodToWork.NotificationService.Application.Features.Email.Commands;
 using GoodToWork.NotificationService.Infrastructure.Emailer.Configuration;
 using GoodToWork.NotificationService.Infrastructure.Persistance.Configuration;
 using GoodToWork.Shared.MessageBroker.DTOs.Email;
@@ -31,8 +30,6 @@ builder.Services.AddMessageBroker(c =>
     c.RegisterConnectionUri(builder.Configuration["RabbitMqConfiguration:ConnectionUri"]);
     c.RegisterListener<EmailCreatedEvent>();
 });
-
-builder.Services.AddTransient<ToDeleteCommand>();
 
 builder.Services.AddHostedService<SendWaitingEmailsService>();
 
