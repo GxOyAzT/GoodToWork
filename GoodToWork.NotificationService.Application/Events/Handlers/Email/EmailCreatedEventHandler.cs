@@ -1,9 +1,9 @@
-﻿using GoodToWork.NotificationService.API.Event.Converters.Email;
+﻿using GoodToWork.NotificationService.Application.Events.Converters.Email;
+using GoodToWork.Shared.MessageBroker.Application.Interfaces;
 using GoodToWork.Shared.MessageBroker.DTOs.Email;
-using GoodToWork.Shared.MessageBroker.Infrastructure.Interfaces;
 using MediatR;
 
-namespace GoodToWork.NotificationService.API.Event.Handlers.Email;
+namespace GoodToWork.NotificationService.Application.Events.Handlers.Email;
 
 public class EmailCreatedEventHandler : IEventHandler<EmailCreatedEvent>
 {

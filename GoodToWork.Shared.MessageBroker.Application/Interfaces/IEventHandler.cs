@@ -1,6 +1,6 @@
 ﻿using GoodToWork.Shared.MessageBroker.DTOs.Shared;
 
-namespace GoodToWork.Shared.MessageBroker.Infrastructure.Interfaces;
+namespace GoodToWork.Shared.MessageBroker.Application.Interfaces;
 
 public interface IEventHandler<TEvent> where TEvent : BaseEvent
 {

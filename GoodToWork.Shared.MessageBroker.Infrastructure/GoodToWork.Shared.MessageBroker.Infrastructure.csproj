@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GoodToWork.Shared.MessageBroker.DTOs\GoodToWork.Shared.MessageBroker.DTOs.csproj" />
+    <ProjectReference Include="..\GoodToWork.Shared.MessageBroker.Application\GoodToWork.Shared.MessageBroker.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
-﻿using GoodToWork.Shared.MessageBroker.DTOs.Shared;
-using GoodToWork.Shared.MessageBroker.Infrastructure.Interfaces;
+﻿using GoodToWork.Shared.MessageBroker.Application.Interfaces;
+using GoodToWork.Shared.MessageBroker.DTOs.Shared;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
