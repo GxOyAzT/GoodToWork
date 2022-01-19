@@ -2,7 +2,7 @@
 
 namespace GoodToWork.Shared.MessageBroker.DTOs.User;
 
-public class UserCreatedEvent : BaseEvent
+public class UserUpdatedEvent : BaseEvent
 {
     public Guid Id { get; set; }
     public string UserName { get; set; }

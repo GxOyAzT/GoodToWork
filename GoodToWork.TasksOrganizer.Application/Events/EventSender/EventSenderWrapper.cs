@@ -1,7 +1,7 @@
 ﻿using GoodToWork.Shared.MessageBroker.Application.Interfaces;
 using GoodToWork.Shared.MessageBroker.DTOs.Shared;
 
-namespace GoodToWork.TasksOrganizer.Application.EventSender;
+namespace GoodToWork.TasksOrganizer.Application.Events.EventSender;
 
 public class EventSenderWrapper : IEventSenderWrapper
 {

@@ -1,6 +1,6 @@
 ﻿using GoodToWork.Shared.MessageBroker.DTOs.Email;
 using GoodToWork.TasksOrganizer.Application.Builders.Entities.Problem;
-using GoodToWork.TasksOrganizer.Application.EventSender;
+using GoodToWork.TasksOrganizer.Application.Events.EventSender;
 using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
 using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
