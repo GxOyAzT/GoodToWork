@@ -1,4 +1,5 @@
-﻿using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Access;
+using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
 using GoodToWork.Shared.MessageBroker.DTOs.Email;
 using GoodToWork.TasksOrganizer.Application.ApiModels.Problem;
 using GoodToWork.TasksOrganizer.Application.Events.EventSender;
@@ -8,7 +9,6 @@ using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.Problem;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.ProjectUser;
 using GoodToWork.TasksOrganizer.Domain.Entities;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
 using GoodToWork.TasksOrganizer.Infrastructure.Features.Problem.Queries;
 using MediatR;
 using Moq;
@@ -94,6 +94,37 @@ public class CreateProblemHandlerTests
 
         await new CreateProblemHandler(mockedCurrentDateTime.Object, mockedMediator.Object, mockedAppRepo.Object, mockedEventSender.Object)
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.Empty, Guid.Empty), new CancellationToken());
+
+        mockedAppRepo.Verify(m => m.Problems.Add(It.IsAny<ProblemEntity>()), Times.Once());
+        mockedAppRepo.Verify(m => m.SaveChanges(), Times.Once());
+        mockedEventSender.Verify(m => m.Send(It.IsAny<EmailCreatedEvent>()), Times.Never());
+    }
+
+    [Fact]
+    public async Task CorrectInputWithEmailSend()
+    {
+        var mockedAppRepo = new Mock<IAppRepository>();
+        var mockedProjectUsers = new Mock<IProjectUserRepository>();
+        var mockedProblems = new Mock<IProblemRepository>();
+        var mockedCurrentDateTime = new Mock<ICurrentDateTime>();
+        var mockedMediator = new Mock<IMediator>();
+        var mockedEventSender = new Mock<IEventSenderWrapper>();
+
+
+        mockedMediator.Setup(m => m.Send(It.IsAny<ValidateProblemQuery>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(new ProblemValidationModel()));
+
+        mockedProblems.Setup(m => m.Add(It.IsAny<ProblemEntity>()))
+            .Returns(Task.FromResult(new ProblemEntity()));
+
+        mockedAppRepo.Setup(m => m.ProjectUsers).Returns(mockedProjectUsers.Object);
+        mockedAppRepo.Setup(m => m.Problems).Returns(mockedProblems.Object);
+
+        mockedProjectUsers.Setup(m => m.Find(It.IsAny<Func<ProjectUserEntity, bool>>()))
+            .Returns(Task.FromResult(new ProjectUserEntity()));
+
+        await new CreateProblemHandler(mockedCurrentDateTime.Object, mockedMediator.Object, mockedAppRepo.Object, mockedEventSender.Object)
+            .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.NewGuid(), Guid.Empty), new CancellationToken());
 
         mockedAppRepo.Verify(m => m.Problems.Add(It.IsAny<ProblemEntity>()), Times.Once());
         mockedAppRepo.Verify(m => m.SaveChanges(), Times.Once());

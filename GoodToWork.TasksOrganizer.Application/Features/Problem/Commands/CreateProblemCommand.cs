@@ -1,4 +1,5 @@
-﻿using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Access;
+using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
 using GoodToWork.Shared.MessageBroker.DTOs.Email;
 using GoodToWork.TasksOrganizer.Application.Builders.Entities.Problem;
 using GoodToWork.TasksOrganizer.Application.Events.EventSender;
@@ -6,7 +7,6 @@ using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
 using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Domain.Enums;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
 using GoodToWork.TasksOrganizer.Infrastructure.Features.Problem.Queries;
 using MediatR;
 using System.Net;

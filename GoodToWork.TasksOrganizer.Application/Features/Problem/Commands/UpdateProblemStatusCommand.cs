@@ -1,10 +1,10 @@
-﻿using GoodToWork.Shared.Common.Domain.Exceptions.Entities;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Access;
+using GoodToWork.Shared.Common.Domain.Exceptions.Entities;
 using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
 using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Enums;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
 using MediatR;
 using System.Net;
 

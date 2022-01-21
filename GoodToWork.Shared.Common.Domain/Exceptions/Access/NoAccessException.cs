@@ -1,7 +1,7 @@
-﻿using GoodToWork.TasksOrganizer.Domain.Exceptions.Shared;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Shared;
 using System.Net;
 
-namespace GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
+namespace GoodToWork.Shared.Common.Domain.Exceptions.Access;
 
 public class NoAccessException : DomainException
 {
