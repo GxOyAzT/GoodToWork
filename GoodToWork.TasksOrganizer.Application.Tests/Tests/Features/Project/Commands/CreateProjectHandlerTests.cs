@@ -1,9 +1,9 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.Project.Commands;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
+using GoodToWork.TasksOrganizer.Application.Features.Project.Commands;
 using GoodToWork.TasksOrganizer.Application.Features.Project.Queries;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.Project;
 using GoodToWork.TasksOrganizer.Domain.Entities;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Validation;
 using MediatR;
 using Moq;
 using System;
@@ -22,13 +22,13 @@ public class CreateProjectHandlerTests
         var mockedMediator = new Mock<IMediator>();
 
         mockedMediator.Setup(m => m.Send(It.IsAny<ValidateProjectInputQuery>(), It.IsAny<CancellationToken>()))
-            .Throws(new ValidationFailedError($"Passed object is invalid.", System.Net.HttpStatusCode.BadRequest, new object()));
+            .Throws(new ValidationFailedException($"Passed object is invalid.", System.Net.HttpStatusCode.BadRequest, new object()));
 
         var input = new CreateProjectCommand("", "", Guid.Empty);
 
         var testedUnit = new CreateProjectHandler(mockedMediator.Object, mockedAppRepo.Object);
 
-        await Assert.ThrowsAsync<ValidationFailedError>(() => testedUnit.Handle(input, new CancellationToken()));
+        await Assert.ThrowsAsync<ValidationFailedException>(() => testedUnit.Handle(input, new CancellationToken()));
 
         mockedAppRepo.Verify(v => v.SaveChanges(), Times.Never());
     }

@@ -1,5 +1,5 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.Project.Queries;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Validation;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
+using GoodToWork.TasksOrganizer.Application.Features.Project.Queries;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -15,7 +15,7 @@ public class ValidateProductInputHandlerTests
 
         var testedUnit = new ValidateProjectInputHandler();
 
-        await Assert.ThrowsAsync<ValidationFailedError>(() => testedUnit.Handle(input, new CancellationToken()));
+        await Assert.ThrowsAsync<ValidationFailedException>(() => testedUnit.Handle(input, new CancellationToken()));
     }
 
     [Fact]
@@ -35,7 +35,7 @@ public class ValidateProductInputHandlerTests
 
         var testedUnit = new ValidateProjectInputHandler();
 
-        await Assert.ThrowsAsync<ValidationFailedError>(() => testedUnit.Handle(input, new CancellationToken()));
+        await Assert.ThrowsAsync<ValidationFailedException>(() => testedUnit.Handle(input, new CancellationToken()));
     }
 
     [Fact]
@@ -45,7 +45,7 @@ public class ValidateProductInputHandlerTests
 
         var testedUnit = new ValidateProjectInputHandler();
 
-        await Assert.ThrowsAsync<ValidationFailedError>(() => testedUnit.Handle(input, new CancellationToken()));
+        await Assert.ThrowsAsync<ValidationFailedException>(() => testedUnit.Handle(input, new CancellationToken()));
     }
 
     [Fact]

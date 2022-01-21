@@ -1,4 +1,5 @@
-﻿using GoodToWork.Shared.MessageBroker.DTOs.Email;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
+using GoodToWork.Shared.MessageBroker.DTOs.Email;
 using GoodToWork.TasksOrganizer.Application.ApiModels.Problem;
 using GoodToWork.TasksOrganizer.Application.Events.EventSender;
 using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
@@ -8,7 +9,6 @@ using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.Problem;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.ProjectUser;
 using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Validation;
 using GoodToWork.TasksOrganizer.Infrastructure.Features.Problem.Queries;
 using MediatR;
 using Moq;
@@ -61,7 +61,7 @@ public class CreateProblemHandlerTests
         mockedProjectUsers.Setup(m => m.Find(It.IsAny<Func<ProjectUserEntity, bool>>()))
             .Returns(Task.FromResult(new ProjectUserEntity()));
 
-        await Assert.ThrowsAsync<ValidationFailedError>(() => new CreateProblemHandler(mockedCurrentDateTime.Object, mockedMediator.Object, mockedAppRepo.Object, mockedEventSender.Object)
+        await Assert.ThrowsAsync<ValidationFailedException>(() => new CreateProblemHandler(mockedCurrentDateTime.Object, mockedMediator.Object, mockedAppRepo.Object, mockedEventSender.Object)
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.Empty, Guid.Empty), new CancellationToken()));
 
         mockedAppRepo.Verify(m => m.Problems, Times.Never());

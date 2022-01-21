@@ -1,4 +1,5 @@
-﻿using GoodToWork.Shared.MessageBroker.DTOs.Email;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
+using GoodToWork.Shared.MessageBroker.DTOs.Email;
 using GoodToWork.TasksOrganizer.Application.Builders.Entities.Problem;
 using GoodToWork.TasksOrganizer.Application.Events.EventSender;
 using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
@@ -6,7 +7,6 @@ using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Domain.Enums;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Validation;
 using GoodToWork.TasksOrganizer.Infrastructure.Features.Problem.Queries;
 using MediatR;
 using System.Net;
@@ -49,7 +49,7 @@ public class CreateProblemHandler : IRequestHandler<CreateProblemCommand, Guid>
 
         if (!validationResult.IsValid)
         {
-            throw new ValidationFailedError("Incorrect input.", HttpStatusCode.Forbidden, validationResult);
+            throw new ValidationFailedException("Incorrect input.", HttpStatusCode.Forbidden, validationResult);
         }
 
         var newProblem = ProblemEntityBuilder.Create(_currentDateTime)

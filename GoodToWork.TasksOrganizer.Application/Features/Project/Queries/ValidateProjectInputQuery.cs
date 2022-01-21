@@ -1,5 +1,5 @@
-﻿using GoodToWork.TasksOrganizer.Application.ApiModels.Project;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Validation;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
+using GoodToWork.TasksOrganizer.Application.ApiModels.Project;
 using MediatR;
 
 namespace GoodToWork.TasksOrganizer.Application.Features.Project.Queries;
@@ -32,7 +32,7 @@ public sealed class ValidateProjectInputHandler : IRequestHandler<ValidateProjec
         }
 
         if (!validationModel.IsValid)
-            throw new ValidationFailedError($"Passed object is invalid.", System.Net.HttpStatusCode.BadRequest, validationModel);
+            throw new ValidationFailedException($"Passed object is invalid.", System.Net.HttpStatusCode.BadRequest, validationModel);
 
         return Task.FromResult(Unit.Value);
     }
