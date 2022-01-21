@@ -1,4 +1,5 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.Project.Commands;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Entities;
+using GoodToWork.TasksOrganizer.Application.Features.Project.Commands;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.Project;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.User;
@@ -6,7 +7,6 @@ using GoodToWork.TasksOrganizer.Application.Tests.Mocks.EntitiesGenerator.Projec
 using GoodToWork.TasksOrganizer.Application.Tests.Mocks.EntitiesGenerator.User;
 using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Entities;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Shared;
 using Moq;
 using System;

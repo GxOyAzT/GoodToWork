@@ -1,8 +1,8 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.Project.Queries;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Entities;
+using GoodToWork.TasksOrganizer.Application.Features.Project.Queries;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.Project;
 using GoodToWork.TasksOrganizer.Domain.Entities;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Entities;
 using Moq;
 using System;
 using System.Collections.Generic;

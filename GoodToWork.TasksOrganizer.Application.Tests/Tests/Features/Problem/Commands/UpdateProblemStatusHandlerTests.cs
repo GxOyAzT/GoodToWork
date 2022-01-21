@@ -1,11 +1,11 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.Problem.Commands;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Entities;
+using GoodToWork.TasksOrganizer.Application.Features.Problem.Commands;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.Problem;
 using GoodToWork.TasksOrganizer.Application.Tests.Mocks.CurrentDateTime;
 using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Enums;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Entities;
 using Moq;
 using System;
 using System.Threading;

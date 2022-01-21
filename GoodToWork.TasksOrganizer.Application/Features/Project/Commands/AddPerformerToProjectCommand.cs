@@ -1,9 +1,9 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.Shared;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Entities;
+using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
 using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Enums;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Access;
-using GoodToWork.TasksOrganizer.Domain.Exceptions.Entities;
 using GoodToWork.TasksOrganizer.Domain.Exceptions.Shared;
 using MediatR;
 using System.Net;

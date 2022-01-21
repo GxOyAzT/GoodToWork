@@ -49,6 +49,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.Shared.MessageBr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.Shared.MessageBroker.Application", "GoodToWork.Shared.MessageBroker.Application\GoodToWork.Shared.MessageBroker.Application.csproj", "{400DDFD1-391E-4B31-8A28-75B7EC401BD8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{9394AE29-ED03-4C4F-9B6B-F6B18AB79B44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.Shared.Common.Domain", "GoodToWork.Shared.Common.Domain\GoodToWork.Shared.Common.Domain.csproj", "{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -115,6 +119,10 @@ Global
 		{400DDFD1-391E-4B31-8A28-75B7EC401BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{400DDFD1-391E-4B31-8A28-75B7EC401BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{400DDFD1-391E-4B31-8A28-75B7EC401BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +148,8 @@ Global
 		{CAA8E3EE-A8FE-4CC8-9376-4ACB4FA929C4} = {EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}
 		{D84D6D5B-C714-4892-A0D1-B90783D81517} = {EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}
 		{400DDFD1-391E-4B31-8A28-75B7EC401BD8} = {EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}
+		{9394AE29-ED03-4C4F-9B6B-F6B18AB79B44} = {7430E2D6-1F12-4A1A-AF09-63A6E86B3F1F}
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65} = {9394AE29-ED03-4C4F-9B6B-F6B18AB79B44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B961D32-41B4-42A3-9E1C-0A2DA9F9450B}

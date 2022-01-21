@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GoodToWork.Shared.Common.Domain\GoodToWork.Shared.Common.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -1,7 +1,7 @@
-﻿using GoodToWork.TasksOrganizer.Domain.Exceptions.Shared;
+﻿using GoodToWork.Shared.Common.Domain.Exceptions.Shared;
 using System.Net;
 
-namespace GoodToWork.TasksOrganizer.Domain.Exceptions.Entities;
+namespace GoodToWork.Shared.Common.Domain.Exceptions.Entities;
 
 public class CannnotFindException : DomainException
 {
