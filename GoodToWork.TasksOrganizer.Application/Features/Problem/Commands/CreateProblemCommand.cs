@@ -11,7 +11,7 @@ using GoodToWork.TasksOrganizer.Infrastructure.Features.Problem.Queries;
 using MediatR;
 using System.Net;
 
-namespace GoodToWork.TasksOrganizer.Application.Features.TaskFeat.Commands;
+namespace GoodToWork.TasksOrganizer.Application.Features.Problem.Commands;
 
 public sealed record CreateProblemCommand(string Title, string Description, Guid ProjectId, Guid PerformerId, Guid SenderId) : BaseSenderIdRequest(SenderId), IRequest<Guid>;
 

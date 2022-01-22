@@ -1,4 +1,5 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime;
+﻿using GoodToWork.TasksOrganizer.Application.Events.EventSender;
+using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime;
 using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,11 +9,12 @@ namespace GoodToWork.TasksOrganizer.Application.Configuration;
 
 public static class ApplicationConfiguration
 {
-    public static IServiceCollection ConfigureInfrastructureLayer(this IServiceCollection services)
+    public static IServiceCollection ConfigureApplicationLayer(this IServiceCollection services)
     {
         services.AddMediatR(Assembly.GetExecutingAssembly());
 
         services.AddTransient<ICurrentDateTime, GetCurrentDateTime>();
+        services.AddTransient<IEventSenderWrapper, EventSenderWrapper>();
 
         return services;
     }
