@@ -56,7 +56,7 @@ public class AddPerformerToProjectHandler : IRequestHandler<AddPerformerToProjec
 
         await _appRepository.Projects.Update(project);
 
-        await _appRepository.SaveChanges();
+        await _appRepository.SaveChangesAsync();
 
         return Unit.Value;
     }

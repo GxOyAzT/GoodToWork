@@ -23,14 +23,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Persistance\Repositories\AppRepo\" />
-	  <Folder Include="Persistance\Repositories\Project\" />
-	  <Folder Include="Persistance\Repositories\Shared\" />
-	  <Folder Include="Persistance\Repositories\User\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
 	</ItemGroup>
 	
 </Project>

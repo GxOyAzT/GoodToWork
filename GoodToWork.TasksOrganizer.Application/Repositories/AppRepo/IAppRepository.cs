@@ -14,6 +14,6 @@ public interface IAppRepository
     IProblemRepository Problems { get; }
     ICommentRepository Comments { get; }
 
-    Task SaveChanges();
+    void SaveChanges();
     Task SaveChangesAsync();
 }

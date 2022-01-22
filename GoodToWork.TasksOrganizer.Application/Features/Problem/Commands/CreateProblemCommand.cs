@@ -62,7 +62,7 @@ public class CreateProblemHandler : IRequestHandler<CreateProblemCommand, Guid>
 
         var insertedProblem = await _appRepository.Problems.Add(newProblem);
 
-        await _appRepository.SaveChanges();
+        await _appRepository.SaveChangesAsync();
 
         if (newProblem.PerformerId != Guid.Empty)
             await _eventSender.Send(new EmailCreatedEvent()

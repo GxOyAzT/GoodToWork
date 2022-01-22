@@ -37,7 +37,7 @@ public sealed class UpdateUserHandler : IRequestHandler<UpdateUserCommand>
             await _appRepository.Users.Add(user);
         }
 
-        await _appRepository.SaveChanges();
+        await _appRepository.SaveChangesAsync();
 
         return Unit.Value;
     }

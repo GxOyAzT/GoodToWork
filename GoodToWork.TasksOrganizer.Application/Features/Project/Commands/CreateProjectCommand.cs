@@ -35,7 +35,7 @@ public sealed class CreateProjectHandler : IRequestHandler<CreateProjectCommand,
 
         var insertedProject = await _appRepository.Projects.Add(newProject);
 
-        await _appRepository.SaveChanges();
+        await _appRepository.SaveChangesAsync();
 
         return insertedProject;
     }
