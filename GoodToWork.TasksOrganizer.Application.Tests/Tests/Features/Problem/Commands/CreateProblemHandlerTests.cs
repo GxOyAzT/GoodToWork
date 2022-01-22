@@ -39,7 +39,7 @@ public class CreateProblemHandlerTests
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.Empty, Guid.Empty), new CancellationToken()));
 
         mockedAppRepo.Verify(m => m.Problems, Times.Never());
-        mockedAppRepo.Verify(m => m.SaveChanges(), Times.Never());
+        mockedAppRepo.Verify(m => m.SaveChangesAsync(), Times.Never());
         mockedEventSender.Verify(m => m.Send(It.IsAny<EmailCreatedEvent>()), Times.Never());
     }
 
@@ -65,7 +65,7 @@ public class CreateProblemHandlerTests
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.Empty, Guid.Empty), new CancellationToken()));
 
         mockedAppRepo.Verify(m => m.Problems, Times.Never());
-        mockedAppRepo.Verify(m => m.SaveChanges(), Times.Never());
+        mockedAppRepo.Verify(m => m.SaveChangesAsync(), Times.Never());
         mockedEventSender.Verify(m => m.Send(It.IsAny<EmailCreatedEvent>()), Times.Never());
     }
 
@@ -96,7 +96,7 @@ public class CreateProblemHandlerTests
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.Empty, Guid.Empty), new CancellationToken());
 
         mockedAppRepo.Verify(m => m.Problems.Add(It.IsAny<ProblemEntity>()), Times.Once());
-        mockedAppRepo.Verify(m => m.SaveChanges(), Times.Once());
+        mockedAppRepo.Verify(m => m.SaveChangesAsync(), Times.Once());
         mockedEventSender.Verify(m => m.Send(It.IsAny<EmailCreatedEvent>()), Times.Never());
     }
 
@@ -127,7 +127,7 @@ public class CreateProblemHandlerTests
             .Handle(new CreateProblemCommand("valid title", "valid description", Guid.Empty, Guid.NewGuid(), Guid.Empty), new CancellationToken());
 
         mockedAppRepo.Verify(m => m.Problems.Add(It.IsAny<ProblemEntity>()), Times.Once());
-        mockedAppRepo.Verify(m => m.SaveChanges(), Times.Once());
+        mockedAppRepo.Verify(m => m.SaveChangesAsync(), Times.Once());
         mockedEventSender.Verify(m => m.Send(It.IsAny<EmailCreatedEvent>()), Times.Once());
     }
 }

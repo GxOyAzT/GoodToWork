@@ -33,7 +33,7 @@ public class UpdateUserHandlerTests
 
         mockUserRepo.Verify(e => e.Add(It.IsAny<UserEntity>()), Times.Once);
         mockUserRepo.Verify(e => e.Update(It.IsAny<UserEntity>()), Times.Never);
-        mockedAppRepo.Verify(e => e.SaveChanges(), Times.Once());
+        mockedAppRepo.Verify(e => e.SaveChangesAsync(), Times.Once());
     }
 
     [Fact]
@@ -55,6 +55,6 @@ public class UpdateUserHandlerTests
 
         mockUserRepo.Verify(e => e.Add(It.IsAny<UserEntity>()), Times.Never);
         mockUserRepo.Verify(e => e.Update(It.IsAny<UserEntity>()), Times.Once);
-        mockedAppRepo.Verify(e => e.SaveChanges(), Times.Once());
+        mockedAppRepo.Verify(e => e.SaveChangesAsync(), Times.Once());
     }
 }

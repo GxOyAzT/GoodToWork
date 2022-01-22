@@ -38,13 +38,6 @@ internal class AppRepository : IAppRepository
 
     public ICommentRepository Comments { get; }
 
-    public void SaveChanges()
-    {
-        _appDbContext.SaveChanges();
-    }
-
-    public async Task SaveChangesAsync()
-    {
+    public async Task SaveChangesAsync() =>
         await _appDbContext.SaveChangesAsync();
-    }
 }

@@ -67,7 +67,7 @@ public class UpdateProblemStatusHandlerTests
             It.Is<ProblemEntity>(e => e.Statuses[2].Status == ProblemStatusEnum.InProgress && 
             e.Statuses[2].Updated == new DateTime(2021, 5, 12, 11, 15, 30))), 
                 Times.Once);
-        mockedAppRepository.Verify(m => m.SaveChanges(), Times.Once());
+        mockedAppRepository.Verify(m => m.SaveChangesAsync(), Times.Once());
     }
 
     [Fact]
@@ -88,7 +88,7 @@ public class UpdateProblemStatusHandlerTests
 
         mockedAppRepository.Verify(m => m.Problems.Update(
             It.IsAny<ProblemEntity>()), Times.Never);
-        mockedAppRepository.Verify(m => m.SaveChanges(), Times.Never());
+        mockedAppRepository.Verify(m => m.SaveChangesAsync(), Times.Never());
     }
 
     [Fact]
@@ -106,7 +106,7 @@ public class UpdateProblemStatusHandlerTests
 
         mockedAppRepository.Verify(m => m.Problems.Update(
             It.IsAny<ProblemEntity>()), Times.Never);
-        mockedAppRepository.Verify(m => m.SaveChanges(), Times.Never());
+        mockedAppRepository.Verify(m => m.SaveChangesAsync(), Times.Never());
     }
 
     [Fact]
@@ -124,7 +124,7 @@ public class UpdateProblemStatusHandlerTests
 
         mockedAppRepository.Verify(m => m.Problems.Update(
             It.IsAny<ProblemEntity>()), Times.Never);
-        mockedAppRepository.Verify(m => m.SaveChanges(), Times.Never());
+        mockedAppRepository.Verify(m => m.SaveChangesAsync(), Times.Never());
     }
 
     [Fact]
@@ -142,6 +142,6 @@ public class UpdateProblemStatusHandlerTests
 
         mockedAppRepository.Verify(m => m.Problems.Update(
             It.IsAny<ProblemEntity>()), Times.Never);
-        mockedAppRepository.Verify(m => m.SaveChanges(), Times.Never());
+        mockedAppRepository.Verify(m => m.SaveChangesAsync(), Times.Never());
     }
 }
