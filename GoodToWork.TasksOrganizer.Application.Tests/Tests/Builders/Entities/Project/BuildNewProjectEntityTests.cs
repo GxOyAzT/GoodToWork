@@ -16,17 +16,18 @@ public class BuildNewProjectEntityTests
 
         mockedCurrentDateTime.Setup(cdt => cdt.CurrentDateTime).Returns(new DateTime(2022, 1, 15));
 
-        var testedUnit = ProjectEntityBuilder.Create(mockedCurrentDateTime.Object)
+        var newProject = ProjectEntityBuilder.Create(mockedCurrentDateTime.Object)
                             .WithName("valid_name")
                             .WithDescription("valid_description")
                             .WithCreator(Guid.Empty)
                             .Build();
 
-        Assert.Equal("valid_name", testedUnit.Name);
-        Assert.Equal("valid_description", testedUnit.Description);
-        Assert.Equal(new DateTime(2022, 1, 15), testedUnit.Created);
-        Assert.Single(testedUnit.ProjectUsers);
-        Assert.Equal(Guid.Empty, testedUnit.ProjectUsers[0].UserId);
-        Assert.Equal(UserProjectRoleEnum.Moderator, testedUnit.ProjectUsers[0].Role);
+        Assert.Equal("valid_name", newProject.Name);
+        Assert.Equal("valid_description", newProject.Description);
+        Assert.Equal(new DateTime(2022, 1, 15), newProject.Created);
+        Assert.Single(newProject.ProjectUsers);
+        Assert.Equal(Guid.Empty, newProject.ProjectUsers[0].UserId);
+        Assert.Equal(UserProjectRoleEnum.Moderator, newProject.ProjectUsers[0].Role);
+        Assert.True(newProject.IsActive);
     }
 }

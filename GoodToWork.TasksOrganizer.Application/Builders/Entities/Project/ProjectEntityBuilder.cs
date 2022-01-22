@@ -39,6 +39,7 @@ public class ProjectEntityBuilder :
 
     public IBuild WithCreator(Guid creatorId)
     {
+        Project.IsActive = true;
         Project.Created = _currentDateTime.CurrentDateTime;
         Project.ProjectUsers.Add(
             new ProjectUserEntity() 

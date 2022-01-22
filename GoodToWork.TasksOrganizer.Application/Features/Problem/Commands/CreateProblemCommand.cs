@@ -38,7 +38,7 @@ public class CreateProblemHandler : IRequestHandler<CreateProblemCommand, Guid>
     {
         var projectUser = await _appRepository.ProjectUsers
             .Find(e => e.ProjectId == request.ProjectId && e.UserId == request.SenderId &&
-            e.Role == (UserProjectRoleEnum.PerformerCreator & UserProjectRoleEnum.Moderator & UserProjectRoleEnum.Creator));
+            e.Role == (UserProjectRoleEnum.Moderator & UserProjectRoleEnum.Creator));
 
         if (projectUser is null)
         {
