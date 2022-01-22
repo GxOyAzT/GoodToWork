@@ -43,7 +43,7 @@ public class UpdateProblemStatusHandlerTests
                     new StatusEntity()
                     {
                         Id = Guid.Parse("00000000-0000-0000-0002-000000000000"),
-                        Status = ProblemStatusEnum.Noticed,
+                        Status = ProblemStatusEnum.ToFix,
                         Updated = new DateTime(2021,3,2)
                     }
                 }

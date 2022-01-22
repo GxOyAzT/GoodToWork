@@ -17,6 +17,6 @@ public class ProblemEntity : BaseEntity
     public virtual UserEntity? Creator { get; set; }
     public virtual UserEntity? Performer { get; set; }
     public virtual ProjectEntity? Project { get; set; }
-    public virtual List<CommentEntity>? Comments { get; set; }
-    public virtual List<StatusEntity>? Statuses { get; set; }
+    public virtual List<CommentEntity>? Comments { get; set; } = new List<CommentEntity>();
+    public virtual List<StatusEntity>? Statuses { get; set; } = new List<StatusEntity>();
 }

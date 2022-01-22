@@ -49,7 +49,7 @@ public sealed class UpdateProblemStatusHandler : IRequestHandler<UpdateProblemSt
 
         if (problem.PerformerId == request.SenderId)
         {
-            if (!(request.ProblemStatus == ProblemStatusEnum.Noticed || request.ProblemStatus == ProblemStatusEnum.Finished || request.ProblemStatus == ProblemStatusEnum.InProgress))
+            if (!(request.ProblemStatus == ProblemStatusEnum.Finished || request.ProblemStatus == ProblemStatusEnum.InProgress))
             {
                 throw new NoAccessException("You have no access to this status on this task.", HttpStatusCode.Forbidden);
             }
