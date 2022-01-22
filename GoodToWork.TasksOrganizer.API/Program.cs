@@ -4,10 +4,13 @@ using GoodToWork.TasksOrganizer.Application;
 using GoodToWork.TasksOrganizer.Application.Configuration;
 using GoodToWork.TasksOrganizer.Infrastructure.Configuration;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

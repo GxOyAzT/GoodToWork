@@ -1,4 +1,5 @@
-﻿using GoodToWork.TasksOrganizer.Domain.Entities;
+﻿using GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime.Interface;
+using GoodToWork.TasksOrganizer.Domain.Entities;
 using GoodToWork.TasksOrganizer.Domain.Enums;
 
 namespace GoodToWork.TasksOrganizer.Application.Builders.Entities.Project;
@@ -9,17 +10,20 @@ public class ProjectEntityBuilder :
     IWithCreator,
     IBuild
 {
+    private readonly ICurrentDateTime _currentDateTime;
+
     public ProjectEntity Project { get; set; }
 
-    private ProjectEntityBuilder()
+    private ProjectEntityBuilder(ICurrentDateTime currentDateTime)
     {
         Project = new ProjectEntity()
         {
             ProjectUsers = new List<ProjectUserEntity>()
         };
+        _currentDateTime = currentDateTime;
     }
 
-    public static IWithName Create() => new ProjectEntityBuilder();
+    public static IWithName Create(ICurrentDateTime currentDateTime) => new ProjectEntityBuilder(currentDateTime);
 
     public IWithDescription WithName(string name)
     {
@@ -35,6 +39,7 @@ public class ProjectEntityBuilder :
 
     public IBuild WithCreator(Guid creatorId)
     {
+        Project.Created = _currentDateTime.CurrentDateTime;
         Project.ProjectUsers.Add(
             new ProjectUserEntity() 
             { 

@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GoodToWork.Shared.MessageBroker.Infrastructure\GoodToWork.Shared.MessageBroker.Infrastructure.csproj" />
     <ProjectReference Include="..\GoodToWork.TasksOrganizer.Application\GoodToWork.TasksOrganizer.Application.csproj" />
     <ProjectReference Include="..\GoodToWork.TasksOrganizer.Infrastructure\GoodToWork.TasksOrganizer.Infrastructure.csproj" />
