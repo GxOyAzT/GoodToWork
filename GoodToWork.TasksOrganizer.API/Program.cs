@@ -1,28 +1,23 @@
-using GoodToWork.NotificationService.API.HostedServices;
-using GoodToWork.NotificationService.Application;
-using GoodToWork.NotificationService.Application.Configuration;
-using GoodToWork.NotificationService.Infrastructure.Emailer.Configuration;
-using GoodToWork.NotificationService.Infrastructure.Persistance.Configuration;
 using GoodToWork.Shared.MessageBroker.DTOs.User;
 using GoodToWork.Shared.MessageBroker.Infrastructure.Configuration;
+using GoodToWork.TasksOrganizer.Application;
+using GoodToWork.TasksOrganizer.Application.Configuration;
+using GoodToWork.TasksOrganizer.Infrastructure.Configuration;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.AddConsole();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddPersistanceLayer(
-    builder.Configuration
-        .GetSection(nameof(AppDatabaseConfiguration))
-            .Get<AppDatabaseConfiguration>());
+builder.Services.ConfigureApplicationLayer();
 
-builder.Services.AddEmailerLayer();
-
-builder.Services.AddApplicationLayer();
+builder.Services.ConfigureInfrastructureLayer(
+    builder.Configuration.GetConnectionString("TasksOrganizerTests"));
 
 builder.Services.AddMessageBroker(c =>
 {
@@ -30,8 +25,6 @@ builder.Services.AddMessageBroker(c =>
     c.RegisterConnectionUri(builder.Configuration["RabbitMqConfiguration:ConnectionUri"]);
     c.RegisterListener<UserUpdatedEvent>();
 });
-
-builder.Services.AddHostedService<SendWaitingEmailsService>();
 
 var app = builder.Build();
 

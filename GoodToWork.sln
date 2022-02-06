@@ -3,6 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TasksOrganizer", "TasksOrganizer", "{EFB60118-7335-42D2-8794-777639454364}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D9158101-DEAD-4310-B8F4-E6F8F0E318AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{389EDDD3-2784-4508-B19F-FE50F076FFE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.TasksOrganizer.Domain", "GoodToWork.TasksOrganizer.Domain\GoodToWork.TasksOrganizer.Domain.csproj", "{491E8A70-16FC-452C-BD4F-372B967D9771}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.TasksOrganizer.Infrastructure", "GoodToWork.TasksOrganizer.Infrastructure\GoodToWork.TasksOrganizer.Infrastructure.csproj", "{C0B3C8D5-C4F9-488B-BAA0-3DC26DAB402A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.TasksOrganizer.Application", "GoodToWork.TasksOrganizer.Application\GoodToWork.TasksOrganizer.Application.csproj", "{72778149-AB89-41B4-822E-F5206CCBCFE6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.TasksOrganizer.Infrastructure.Tests", "GoodToWork.TasksOrganizer.Infrastructure.Tests\GoodToWork.TasksOrganizer.Infrastructure.Tests.csproj", "{ADC8FC17-8914-4557-8CD2-8F4C1910A697}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.TasksOrganizer.Application.Tests", "GoodToWork.TasksOrganizer.Application.Tests\GoodToWork.TasksOrganizer.Application.Tests.csproj", "{E565D7AD-72E3-41BC-AF48-6D455A5AB904}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NotificationService", "NotificationService", "{DAF40315-0971-4B20-804A-32C67A09DBF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}"
@@ -31,7 +47,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.Shared.MessageBr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.Shared.MessageBroker.Infrastructure", "GoodToWork.Shared.MessageBroker.Infrastructure\GoodToWork.Shared.MessageBroker.Infrastructure.csproj", "{D84D6D5B-C714-4892-A0D1-B90783D81517}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.Shared.MessageBroker.Application", "GoodToWork.Shared.MessageBroker.Application\GoodToWork.Shared.MessageBroker.Application.csproj", "{400DDFD1-391E-4B31-8A28-75B7EC401BD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.Shared.MessageBroker.Application", "GoodToWork.Shared.MessageBroker.Application\GoodToWork.Shared.MessageBroker.Application.csproj", "{400DDFD1-391E-4B31-8A28-75B7EC401BD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{9394AE29-ED03-4C4F-9B6B-F6B18AB79B44}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToWork.Shared.Common.Domain", "GoodToWork.Shared.Common.Domain\GoodToWork.Shared.Common.Domain.csproj", "{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToWork.TasksOrganizer.API", "GoodToWork.TasksOrganizer.API\GoodToWork.TasksOrganizer.API.csproj", "{EF4BC429-EAD2-4A40-8688-097C7CB49E09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +61,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{491E8A70-16FC-452C-BD4F-372B967D9771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491E8A70-16FC-452C-BD4F-372B967D9771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491E8A70-16FC-452C-BD4F-372B967D9771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491E8A70-16FC-452C-BD4F-372B967D9771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0B3C8D5-C4F9-488B-BAA0-3DC26DAB402A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B3C8D5-C4F9-488B-BAA0-3DC26DAB402A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B3C8D5-C4F9-488B-BAA0-3DC26DAB402A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B3C8D5-C4F9-488B-BAA0-3DC26DAB402A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72778149-AB89-41B4-822E-F5206CCBCFE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72778149-AB89-41B4-822E-F5206CCBCFE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72778149-AB89-41B4-822E-F5206CCBCFE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72778149-AB89-41B4-822E-F5206CCBCFE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC8FC17-8914-4557-8CD2-8F4C1910A697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC8FC17-8914-4557-8CD2-8F4C1910A697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC8FC17-8914-4557-8CD2-8F4C1910A697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC8FC17-8914-4557-8CD2-8F4C1910A697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904}.Release|Any CPU.Build.0 = Release|Any CPU
 		{620486E8-0952-43C2-888A-1E05F24018D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{620486E8-0952-43C2-888A-1E05F24018D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{620486E8-0952-43C2-888A-1E05F24018D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,11 +121,26 @@ Global
 		{400DDFD1-391E-4B31-8A28-75B7EC401BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{400DDFD1-391E-4B31-8A28-75B7EC401BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{400DDFD1-391E-4B31-8A28-75B7EC401BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF4BC429-EAD2-4A40-8688-097C7CB49E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4BC429-EAD2-4A40-8688-097C7CB49E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4BC429-EAD2-4A40-8688-097C7CB49E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4BC429-EAD2-4A40-8688-097C7CB49E09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{D9158101-DEAD-4310-B8F4-E6F8F0E318AF} = {EFB60118-7335-42D2-8794-777639454364}
+		{389EDDD3-2784-4508-B19F-FE50F076FFE3} = {EFB60118-7335-42D2-8794-777639454364}
+		{491E8A70-16FC-452C-BD4F-372B967D9771} = {D9158101-DEAD-4310-B8F4-E6F8F0E318AF}
+		{C0B3C8D5-C4F9-488B-BAA0-3DC26DAB402A} = {D9158101-DEAD-4310-B8F4-E6F8F0E318AF}
+		{72778149-AB89-41B4-822E-F5206CCBCFE6} = {D9158101-DEAD-4310-B8F4-E6F8F0E318AF}
+		{ADC8FC17-8914-4557-8CD2-8F4C1910A697} = {389EDDD3-2784-4508-B19F-FE50F076FFE3}
+		{E565D7AD-72E3-41BC-AF48-6D455A5AB904} = {389EDDD3-2784-4508-B19F-FE50F076FFE3}
 		{CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B} = {DAF40315-0971-4B20-804A-32C67A09DBF5}
 		{620486E8-0952-43C2-888A-1E05F24018D2} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
 		{A8EF63A1-40D7-42D9-93AF-6D0CE9CAA4B8} = {CC6C3FD9-F1CD-493C-B7FE-ACE19C6F1E5B}
@@ -97,6 +154,9 @@ Global
 		{CAA8E3EE-A8FE-4CC8-9376-4ACB4FA929C4} = {EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}
 		{D84D6D5B-C714-4892-A0D1-B90783D81517} = {EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}
 		{400DDFD1-391E-4B31-8A28-75B7EC401BD8} = {EC5E2779-000B-4D3F-BC4A-7A970F7EDE76}
+		{9394AE29-ED03-4C4F-9B6B-F6B18AB79B44} = {7430E2D6-1F12-4A1A-AF09-63A6E86B3F1F}
+		{CBDAE2E9-282E-4E35-88AD-0EB6E69BAE65} = {9394AE29-ED03-4C4F-9B6B-F6B18AB79B44}
+		{EF4BC429-EAD2-4A40-8688-097C7CB49E09} = {D9158101-DEAD-4310-B8F4-E6F8F0E318AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B961D32-41B4-42A3-9E1C-0A2DA9F9450B}
