@@ -3,7 +3,7 @@ using GoodToWork.NotificationService.Application;
 using GoodToWork.NotificationService.Application.Configuration;
 using GoodToWork.NotificationService.Infrastructure.Emailer.Configuration;
 using GoodToWork.NotificationService.Infrastructure.Persistance.Configuration;
-using GoodToWork.Shared.MessageBroker.DTOs.User;
+using GoodToWork.Shared.MessageBroker.DTOs.Email;
 using GoodToWork.Shared.MessageBroker.Infrastructure.Configuration;
 using System.Reflection;
 
@@ -27,8 +27,11 @@ builder.Services.AddApplicationLayer();
 builder.Services.AddMessageBroker(c =>
 {
     c.RegisterApplicationLayerAssembly(Assembly.GetAssembly(typeof(ApplicationEntryPoint)));
-    c.RegisterConnectionUri(builder.Configuration["RabbitMqConfiguration:ConnectionUri"]);
-    c.RegisterListener<UserUpdatedEvent>();
+    c.RegisterConnectionUri(
+        builder.Configuration["RabbitMqConfiguration:Host"],
+        builder.Configuration["RabbitMqConfiguration:UserName"],
+        builder.Configuration["RabbitMqConfiguration:Password"]);
+    c.RegisterListener<EmailCreatedEvent>();
 });
 
 builder.Services.AddHostedService<SendWaitingEmailsService>();

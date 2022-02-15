@@ -28,9 +28,9 @@ public class MessageBrokerBuilder
         return this;
     }
 
-    public MessageBrokerBuilder RegisterConnectionUri(string uri)
+    public MessageBrokerBuilder RegisterConnectionUri(string host, string username, string password)
     {
-        var factory = new ConnectionFactory() { Uri = new Uri(uri) };
+        var factory = new ConnectionFactory() { HostName = host, UserName = username, Password = password };
         _connection = factory.CreateConnection();
         _channel = _connection.CreateModel();
 

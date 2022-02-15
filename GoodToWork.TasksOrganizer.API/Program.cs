@@ -3,6 +3,7 @@ using GoodToWork.Shared.MessageBroker.Infrastructure.Configuration;
 using GoodToWork.TasksOrganizer.Application;
 using GoodToWork.TasksOrganizer.Application.Configuration;
 using GoodToWork.TasksOrganizer.Infrastructure.Configuration;
+using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Context;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -22,7 +23,10 @@ builder.Services.ConfigureInfrastructureLayer(
 builder.Services.AddMessageBroker(c =>
 {
     c.RegisterApplicationLayerAssembly(Assembly.GetAssembly(typeof(ApplicationEntryPoint)));
-    c.RegisterConnectionUri(builder.Configuration["RabbitMqConfiguration:ConnectionUri"]);
+    c.RegisterConnectionUri(
+        builder.Configuration["RabbitMqConfiguration:Host"], 
+        builder.Configuration["RabbitMqConfiguration:UserName"], 
+        builder.Configuration["RabbitMqConfiguration:Password"]);
     c.RegisterListener<UserUpdatedEvent>();
 });
 
