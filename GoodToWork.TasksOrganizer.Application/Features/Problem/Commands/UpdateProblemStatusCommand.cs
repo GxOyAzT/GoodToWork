@@ -39,22 +39,6 @@ public sealed class UpdateProblemStatusHandler : IRequestHandler<UpdateProblemSt
             throw new NoAccessException("You have no access to this task.", HttpStatusCode.Forbidden);
         }
 
-        if (problem.CreatorId == request.SenderId)
-        {
-            if (!(request.ProblemStatus == ProblemStatusEnum.ToFix || request.ProblemStatus == ProblemStatusEnum.Closed))
-            {
-                throw new NoAccessException("You have no access to this status on this task.", HttpStatusCode.Forbidden);
-            }
-        }
-
-        if (problem.PerformerId == request.SenderId)
-        {
-            if (!(request.ProblemStatus == ProblemStatusEnum.Finished || request.ProblemStatus == ProblemStatusEnum.InProgress))
-            {
-                throw new NoAccessException("You have no access to this status on this task.", HttpStatusCode.Forbidden);
-            }
-        }
-
         problem.Statuses.Add(new StatusEntity()
         {
             Status = request.ProblemStatus,
