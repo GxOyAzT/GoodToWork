@@ -1,9 +1,12 @@
+using GoodToWork.Shared.Common.Domain.Exceptions.Shared;
+using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
 using GoodToWork.Shared.MessageBroker.DTOs.User;
 using GoodToWork.Shared.MessageBroker.Infrastructure.Configuration;
 using GoodToWork.TasksOrganizer.Application;
 using GoodToWork.TasksOrganizer.Application.Configuration;
 using GoodToWork.TasksOrganizer.Infrastructure.Configuration;
-using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Context;
+using Newtonsoft.Json;
+using System.Net;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -30,13 +33,36 @@ builder.Services.AddMessageBroker(c =>
     c.RegisterListener<UserUpdatedEvent>();
 });
 
+builder.Services.AddCors();
+
 var app = builder.Build();
+
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next.Invoke();
+    }
+    catch (ValidationFailedException ex)
+    {
+        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+    }
+    catch(DomainException ex)
+    {
+        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+    }
+});
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(c => c
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
