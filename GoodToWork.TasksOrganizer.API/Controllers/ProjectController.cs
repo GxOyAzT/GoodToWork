@@ -42,4 +42,9 @@ public class ProjectController : ControllerBase
 
         return await _mediator.Send(new GetProjectForEditQuery(addPerformerToProjectCommand.ProjectId, addPerformerToProjectCommand.SenderId));
     }
+
+    [HttpGet]
+    [Route("detail/{senderId}/{projectId}")]
+    public async Task<ProjectDetailModel> AddCoworkerToProject([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
+        await _mediator.Send(new GetProjectForDetailQuery(projectId, senderId));
 }

@@ -1,5 +1,6 @@
 ﻿namespace GoodToWork.TasksOrganizer.Domain.Enums;
 
+[Flags]
 public enum UserProjectRoleEnum
 {
     Performer = 1,
