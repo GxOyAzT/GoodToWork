@@ -20,6 +20,7 @@ public class ProblemDetailModel
     }
 
     public Guid Id { get => _problemEntity.Id; }
+    public Guid ProjectId { get => _problemEntity.ProjectId; }
     public string Title { get => _problemEntity.Title; }
     public string Description { get => _problemEntity.Description; }
     public string Created { get => _problemEntity.Created.ToString("hh:mm dd-MM-yyyy"); }

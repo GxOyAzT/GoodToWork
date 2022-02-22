@@ -18,6 +18,6 @@ internal class ProblemRepository : BaseRepository<ProblemEntity>, IProblemReposi
             .Include(p => p.Statuses).ThenInclude(s => s.Updator)
             .Include(p => p.Performer)
             .Include(p => p.Creator)
-            .Include(p => p.Comments)
+            .Include(p => p.Comments).ThenInclude(c => c.Creator)
             .FirstOrDefault(filter));
 }
