@@ -21,7 +21,7 @@ public sealed class GetProjectForDetailHandler : IRequestHandler<GetProjectForDe
 
     public async Task<ProjectDetailModel> Handle(GetProjectForDetailQuery request, CancellationToken cancellationToken)
     {
-        var project = (await _appRepository.Projects.GetWithProblems(p => p.Id == request.ProjectId)).FirstOrDefault();
+        var project = (await _appRepository.Projects.GetWithProblemsAndUsers(p => p.Id == request.ProjectId)).FirstOrDefault();
 
         if (project == null)
         {

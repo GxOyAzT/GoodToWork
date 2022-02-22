@@ -45,6 +45,6 @@ public class ProjectController : ControllerBase
 
     [HttpGet]
     [Route("detail/{senderId}/{projectId}")]
-    public async Task<ProjectDetailModel> AddCoworkerToProject([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
+    public async Task<ProjectDetailModel> Detail([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
         await _mediator.Send(new GetProjectForDetailQuery(projectId, senderId));
 }

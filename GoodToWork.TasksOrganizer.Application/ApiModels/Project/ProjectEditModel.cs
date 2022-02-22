@@ -18,6 +18,6 @@ public class ProjectEditModel
     public string Description { get => projectEntity.Description; }
     public string Created { get => projectEntity.Created.ToString("dd - MM - yyyy"); }
     public bool IsActive { get => projectEntity.IsActive; }
-    public IEnumerable<UserBaseModel> AddedUsers { get => projectEntity.ProjectUsers.Select(pu => pu.User).Select(u => new UserBaseModel() { Id = u.Id, Name = u.Name }); }
-    public IEnumerable<UserBaseModel> AvaliableUsers { get => avaliableUsers.Select(u => new UserBaseModel() { Id = u.Id, Name = u.Name }); }
+    public IEnumerable<UserBaseModel> AddedUsers { get => projectEntity.ProjectUsers.Select(pu => pu.User).Select(u => new UserBaseModel(u)); }
+    public IEnumerable<UserBaseModel> AvaliableUsers { get => avaliableUsers.Select(u => new UserBaseModel(u)); }
 }
