@@ -1,4 +1,6 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.Problem.Commands;
+﻿using GoodToWork.TasksOrganizer.Application.ApiModels.Problem;
+using GoodToWork.TasksOrganizer.Application.Features.Problem.Commands;
+using GoodToWork.TasksOrganizer.Application.Features.Problem.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +17,11 @@ public class ProblemController : ControllerBase
     {
         _mediator = mediator;
     }
+
+    [HttpGet]
+    [Route("detail/{problemId}/{senderId}")]
+    public async Task<ProblemDetailModel> Create([FromRoute] Guid problemId, [FromRoute] Guid senderId) =>
+        await _mediator.Send(new GetProblemDetailQuery(problemId, senderId));
 
     [HttpPost]
     [Route("create")]

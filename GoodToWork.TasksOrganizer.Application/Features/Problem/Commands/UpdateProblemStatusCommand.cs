@@ -27,7 +27,7 @@ public sealed class UpdateProblemStatusHandler : IRequestHandler<UpdateProblemSt
 
     public async Task<Unit> Handle(UpdateProblemStatusCommand request, CancellationToken cancellationToken)
     {
-        var problem = await _appRepository.Problems.FindProblemWithStatuses(p => p.Id == request.ProblemId);
+        var problem = await _appRepository.Problems.FindProblemWithStatusesComments(p => p.Id == request.ProblemId);
 
         if (problem is null)
         {

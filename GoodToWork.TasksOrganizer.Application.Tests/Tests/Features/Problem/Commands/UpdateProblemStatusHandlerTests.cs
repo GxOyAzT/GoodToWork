@@ -26,7 +26,7 @@ public class UpdateProblemStatusHandlerTests
 
         mockedAppRepository.Setup(m => m.Problems).Returns(mockedProblemRepository.Object);
 
-        mockedProblemRepository.Setup(m => m.FindProblemWithStatuses(It.IsAny<Func<ProblemEntity, bool>>()))
+        mockedProblemRepository.Setup(m => m.FindProblemWithStatusesComments(It.IsAny<Func<ProblemEntity, bool>>()))
             .Returns(Task.FromResult(new ProblemEntity()
             {
                 Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
@@ -78,7 +78,7 @@ public class UpdateProblemStatusHandlerTests
             ProblemStatusEnum.InProgress,
             Guid.Parse("00000000-0000-0001-0000-000000000000"));
 
-        mockedProblemRepository.Setup(m => m.FindProblemWithStatuses(It.IsAny<Func<ProblemEntity, bool>>()))
+        mockedProblemRepository.Setup(m => m.FindProblemWithStatusesComments(It.IsAny<Func<ProblemEntity, bool>>()))
             .Returns(Task.FromResult((ProblemEntity)null));
 
         await Assert.ThrowsAsync<CannnotFindException>(() => new UpdateProblemStatusHandler(

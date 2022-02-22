@@ -36,7 +36,8 @@ public class ProblemEntityBuilder :
         Problem.Statuses?.Add(new StatusEntity()
         {
             Status = ProblemStatusEnum.Created,
-            Updated = _currentDateTime.CurrentDateTime
+            Updated = _currentDateTime.CurrentDateTime,
+            UpdatorId = Problem.CreatorId
         });
         return Problem;
     }
