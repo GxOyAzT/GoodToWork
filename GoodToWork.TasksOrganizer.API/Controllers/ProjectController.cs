@@ -34,6 +34,11 @@ public class ProjectController : ControllerBase
     public async Task<ProjectEditModel> GetForEdit([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
         await _mediator.Send(new GetProjectForEditQuery(projectId, senderId));
 
+    [HttpGet]
+    [Route("detail/{senderId}/{projectId}")]
+    public async Task<ProjectDetailModel> Detail([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
+        await _mediator.Send(new GetProjectForDetailQuery(projectId, senderId));
+
     [HttpPatch]
     [Route("addcoworkertoproject")]
     public async Task<ProjectEditModel> AddCoworkerToProject([FromBody] AddPerformerToProjectCommand addPerformerToProjectCommand)
@@ -43,8 +48,8 @@ public class ProjectController : ControllerBase
         return await _mediator.Send(new GetProjectForEditQuery(addPerformerToProjectCommand.ProjectId, addPerformerToProjectCommand.SenderId));
     }
 
-    [HttpGet]
-    [Route("detail/{senderId}/{projectId}")]
-    public async Task<ProjectDetailModel> Detail([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
-        await _mediator.Send(new GetProjectForDetailQuery(projectId, senderId));
+    [HttpPatch]
+    [Route("updatecoworkerrole")]
+    public async Task<Unit> UpdateCorowkerRole([FromBody] UpdatePerformerRoleCommand updatePerformerRoleCommand) =>
+        await _mediator.Send(updatePerformerRoleCommand);
 }

@@ -1,4 +1,5 @@
-﻿using GoodToWork.TasksOrganizer.Application.ApiModels.User;
+﻿using GoodToWork.TasksOrganizer.Application.ApiModels.ProjectUser;
+using GoodToWork.TasksOrganizer.Application.ApiModels.User;
 using GoodToWork.TasksOrganizer.Domain.Entities;
 
 namespace GoodToWork.TasksOrganizer.Application.ApiModels.Project;
@@ -18,6 +19,6 @@ public class ProjectEditModel
     public string Description { get => projectEntity.Description; }
     public string Created { get => projectEntity.Created.ToString("dd - MM - yyyy"); }
     public bool IsActive { get => projectEntity.IsActive; }
-    public IEnumerable<UserBaseModel> AddedUsers { get => projectEntity.ProjectUsers.Select(pu => pu.User).Select(u => new UserBaseModel(u)); }
+    public IEnumerable<ProjectUserBaseModel> AddedUsers { get => projectEntity.ProjectUsers.Select(pu => new ProjectUserBaseModel(pu)); }
     public IEnumerable<UserBaseModel> AvaliableUsers { get => avaliableUsers.Select(u => new UserBaseModel(u)); }
 }

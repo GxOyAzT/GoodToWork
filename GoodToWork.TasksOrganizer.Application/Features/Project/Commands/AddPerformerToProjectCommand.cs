@@ -51,7 +51,7 @@ public class AddPerformerToProjectHandler : IRequestHandler<AddPerformerToProjec
         {
             ProjectId = project.Id,
             UserId = request.NewPerformerId,
-            Role = UserProjectRoleEnum.Performer
+            Role = UserProjectRoleEnum.None
         });
 
         await _appRepository.Projects.Update(project);
