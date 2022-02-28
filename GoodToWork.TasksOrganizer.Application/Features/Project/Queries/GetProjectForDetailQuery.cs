@@ -28,6 +28,10 @@ public sealed class GetProjectForDetailHandler : IRequestHandler<GetProjectForDe
             throw new CannnotFindException($"Cannot find project of ID: {request.ProjectId}", HttpStatusCode.NotFound);
         }
 
-        return new ProjectDetailModel(project);
+        var projectDetailModel = new ProjectDetailModel(project);
+
+        projectDetailModel.AddSenderPermissions(request.SenderId);
+
+        return projectDetailModel;
     }
 }

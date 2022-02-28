@@ -17,6 +17,9 @@ public class ProjectDetailModel
     public Guid Id { get => _project.Id; }
     public string Name { get => _project.Name; }
     public string Description { get => _project.Description; }
+    public bool HasCreateRole { get; private set; }
     public IEnumerable<ProblemBaseModel> Problems { get => _project.Problems.Select(p => new ProblemBaseModel(p)); }
     public IEnumerable<UserBaseModel> Performers { get => _project.ProjectUsers.Where(e => e.Role.HasFlag(UserProjectRoleEnum.Performer)).Select(pu => new UserBaseModel(pu.User)); }
+
+    public void AddSenderPermissions(Guid senderId) => HasCreateRole = _project.ProjectUsers.Any(pu => pu.UserId == senderId && (UserProjectRoleEnum.Creator | UserProjectRoleEnum.Moderator).HasFlag(pu.Role));
 }

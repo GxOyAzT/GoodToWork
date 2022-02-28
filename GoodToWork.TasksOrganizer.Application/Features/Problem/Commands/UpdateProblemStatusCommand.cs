@@ -42,10 +42,9 @@ public sealed class UpdateProblemStatusHandler : IRequestHandler<UpdateProblemSt
         problem.Statuses.Add(new StatusEntity()
         {
             Status = request.ProblemStatus,
-            Updated = _currentDateTime.CurrentDateTime
+            Updated = _currentDateTime.CurrentDateTime,
+            UpdatorId = request.SenderId
         });
-
-        await _appRepository.Problems.Update(problem);
 
         await _appRepository.SaveChangesAsync();
 

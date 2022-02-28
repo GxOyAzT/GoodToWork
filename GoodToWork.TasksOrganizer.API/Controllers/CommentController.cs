@@ -1,4 +1,5 @@
-﻿using GoodToWork.TasksOrganizer.Application.Features.Comment.Command;
+﻿using GoodToWork.TasksOrganizer.Application.ApiModels.Comment;
+using GoodToWork.TasksOrganizer.Application.Features.Comment.Command;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ public class CommentController : ControllerBase
 
     [HttpPost]
     [Route("create")]
-    public async Task<Guid> Create([FromBody] CreateCommentCommand createCommentCommand) =>
+    public async Task<CommentBaseModel> Create([FromBody] CreateCommentCommand createCommentCommand) =>
         await _mediator.Send(createCommentCommand);
 
 }
