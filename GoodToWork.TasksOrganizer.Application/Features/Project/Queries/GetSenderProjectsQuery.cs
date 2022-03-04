@@ -2,6 +2,7 @@
 using GoodToWork.TasksOrganizer.Application.ApiModels.Project;
 using GoodToWork.TasksOrganizer.Application.Features.Shared;
 using GoodToWork.TasksOrganizer.Application.Persistance.Repositories.AppRepo;
+using GoodToWork.TasksOrganizer.Domain.Entities;
 using MediatR;
 using System.Net;
 
@@ -21,7 +22,9 @@ public sealed class GetSenderProjectsHandler : IRequestHandler<GetSenderProjects
 
     public async Task<List<ProjectBaseModel>> Handle(GetSenderProjectsQuery request, CancellationToken cancellationToken)
     {
-        var projects = await _appRepository.Projects.GetWithUsers(p => p.IsActive && p.ProjectUsers.Select(pu => pu.UserId).Contains(request.SenderId));
+        Func<ProjectEntity, bool> filter = request.SenderId == Guid.Empty ? (p) => p.IsActive : (p) => p.IsActive && p.ProjectUsers.Select(pu => pu.UserId).Contains(request.SenderId);
+
+        var projects = await _appRepository.Projects.GetWithUsers(filter);
 
         if (!projects.Any())
         {
