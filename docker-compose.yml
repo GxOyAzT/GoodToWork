@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: GoodToWork.TasksOrganizer.API/Dockerfile
+    ports:
+      - 444:443
 
   goodtowork.notificationservice.api:
     image: ${DOCKER_REGISTRY-}goodtoworknotificationserviceapi

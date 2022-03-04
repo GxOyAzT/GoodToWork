@@ -13,6 +13,14 @@ internal class ProjectRepository : BaseRepository<ProjectEntity>, IProjectReposi
     {
     }
 
+    public Task<List<ProjectEntity>> GetWithProblemsAndUsers(Func<ProjectEntity, bool> filter) =>
+        Task.FromResult(_appDbContext.Set<ProjectEntity>()
+            .Include(p => p.Problems).ThenInclude(p => p.Statuses)
+            .Include(p => p.Problems).ThenInclude(p => p.Performer)
+            .Include(p => p.ProjectUsers).ThenInclude(pu => pu.User) 
+            .Where(filter)
+            .ToList());
+
     public Task<List<ProjectEntity>> GetWithUsers(Func<ProjectEntity, bool> filter) =>
         Task.FromResult(_appDbContext.Set<ProjectEntity>()
             .Include(p => p.ProjectUsers).ThenInclude(pu => pu.User)

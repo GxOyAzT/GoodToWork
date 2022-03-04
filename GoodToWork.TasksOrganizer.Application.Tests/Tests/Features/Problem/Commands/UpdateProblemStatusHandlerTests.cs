@@ -26,7 +26,7 @@ public class UpdateProblemStatusHandlerTests
 
         mockedAppRepository.Setup(m => m.Problems).Returns(mockedProblemRepository.Object);
 
-        mockedProblemRepository.Setup(m => m.FindProblemWithStatuses(It.IsAny<Func<ProblemEntity, bool>>()))
+        mockedProblemRepository.Setup(m => m.FindProblemWithStatusesComments(It.IsAny<Func<ProblemEntity, bool>>()))
             .Returns(Task.FromResult(new ProblemEntity()
             {
                 Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
@@ -78,7 +78,7 @@ public class UpdateProblemStatusHandlerTests
             ProblemStatusEnum.InProgress,
             Guid.Parse("00000000-0000-0001-0000-000000000000"));
 
-        mockedProblemRepository.Setup(m => m.FindProblemWithStatuses(It.IsAny<Func<ProblemEntity, bool>>()))
+        mockedProblemRepository.Setup(m => m.FindProblemWithStatusesComments(It.IsAny<Func<ProblemEntity, bool>>()))
             .Returns(Task.FromResult((ProblemEntity)null));
 
         await Assert.ThrowsAsync<CannnotFindException>(() => new UpdateProblemStatusHandler(
@@ -98,42 +98,6 @@ public class UpdateProblemStatusHandlerTests
             Guid.Parse("00000000-0000-0000-0000-000000000001"),
             ProblemStatusEnum.InProgress,
             Guid.Parse("00000000-0000-0003-0000-000000000000"));
-
-        await Assert.ThrowsAsync<NoAccessException>(() => new UpdateProblemStatusHandler(
-            CurrentDateTimeMock.MockOne().Object,
-            mockedAppRepository.Object)
-            .Handle(updateProblemStatusCommand, new CancellationToken()));
-
-        mockedAppRepository.Verify(m => m.Problems.Update(
-            It.IsAny<ProblemEntity>()), Times.Never);
-        mockedAppRepository.Verify(m => m.SaveChangesAsync(), Times.Never());
-    }
-
-    [Fact]
-    public async Task CreatorRequestPerformerStatus()
-    {
-        var updateProblemStatusCommand = new UpdateProblemStatusCommand(
-            Guid.Parse("00000000-0000-0000-0000-000000000001"),
-            ProblemStatusEnum.InProgress,
-            Guid.Parse("00000000-0000-0001-0000-000000000000"));
-
-        await Assert.ThrowsAsync<NoAccessException>(() => new UpdateProblemStatusHandler(
-            CurrentDateTimeMock.MockOne().Object,
-            mockedAppRepository.Object)
-            .Handle(updateProblemStatusCommand, new CancellationToken()));
-
-        mockedAppRepository.Verify(m => m.Problems.Update(
-            It.IsAny<ProblemEntity>()), Times.Never);
-        mockedAppRepository.Verify(m => m.SaveChangesAsync(), Times.Never());
-    }
-
-    [Fact]
-    public async Task PerformerRequestCreatorStatus()
-    {
-        var updateProblemStatusCommand = new UpdateProblemStatusCommand(
-            Guid.Parse("00000000-0000-0000-0000-000000000001"),
-            ProblemStatusEnum.ToFix,
-            Guid.Parse("00000000-0000-0002-0000-000000000000"));
 
         await Assert.ThrowsAsync<NoAccessException>(() => new UpdateProblemStatusHandler(
             CurrentDateTimeMock.MockOne().Object,

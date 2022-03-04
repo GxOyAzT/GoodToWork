@@ -11,4 +11,5 @@ public class UserEntity : BaseEntity
     public virtual List<ProblemEntity> ProblemsCreator { get; set; } = new List<ProblemEntity>();
     public virtual List<ProblemEntity> ProblemsPerformer { get; set; } = new List<ProblemEntity>();
     public virtual List<CommentEntity> Comments { get; set; } = new List<CommentEntity>();
+    public virtual List<StatusEntity> ChangedStatuses { get; set; } = new List<StatusEntity>();
 }
