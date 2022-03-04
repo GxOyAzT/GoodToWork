@@ -13,8 +13,11 @@ internal class ProblemRepository : BaseRepository<ProblemEntity>, IProblemReposi
     {
     }
 
-    public Task<ProblemEntity> FindProblemWithStatuses(Func<ProblemEntity, bool> filter) =>
+    public Task<ProblemEntity> FindProblemWithStatusesComments(Func<ProblemEntity, bool> filter) =>
         Task.FromResult(_appDbContext.Set<ProblemEntity>()
-            .Include(p => p.Statuses)
+            .Include(p => p.Statuses).ThenInclude(s => s.Updator)
+            .Include(p => p.Performer)
+            .Include(p => p.Creator)
+            .Include(p => p.Comments).ThenInclude(c => c.Creator)
             .FirstOrDefault(filter));
 }

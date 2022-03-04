@@ -4,5 +4,5 @@ namespace GoodToWork.TasksOrganizer.Application.Features.CurrentDateTime;
 
 internal class GetCurrentDateTime : ICurrentDateTime
 {
-    public DateTime CurrentDateTime => new DateTime();
+    public DateTime CurrentDateTime => DateTime.UtcNow;
 }

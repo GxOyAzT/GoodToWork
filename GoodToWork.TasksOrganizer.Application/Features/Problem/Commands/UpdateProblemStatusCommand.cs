@@ -27,7 +27,7 @@ public sealed class UpdateProblemStatusHandler : IRequestHandler<UpdateProblemSt
 
     public async Task<Unit> Handle(UpdateProblemStatusCommand request, CancellationToken cancellationToken)
     {
-        var problem = await _appRepository.Problems.FindProblemWithStatuses(p => p.Id == request.ProblemId);
+        var problem = await _appRepository.Problems.FindProblemWithStatusesComments(p => p.Id == request.ProblemId);
 
         if (problem is null)
         {
@@ -39,29 +39,12 @@ public sealed class UpdateProblemStatusHandler : IRequestHandler<UpdateProblemSt
             throw new NoAccessException("You have no access to this task.", HttpStatusCode.Forbidden);
         }
 
-        if (problem.CreatorId == request.SenderId)
-        {
-            if (!(request.ProblemStatus == ProblemStatusEnum.ToFix || request.ProblemStatus == ProblemStatusEnum.Closed))
-            {
-                throw new NoAccessException("You have no access to this status on this task.", HttpStatusCode.Forbidden);
-            }
-        }
-
-        if (problem.PerformerId == request.SenderId)
-        {
-            if (!(request.ProblemStatus == ProblemStatusEnum.Finished || request.ProblemStatus == ProblemStatusEnum.InProgress))
-            {
-                throw new NoAccessException("You have no access to this status on this task.", HttpStatusCode.Forbidden);
-            }
-        }
-
         problem.Statuses.Add(new StatusEntity()
         {
             Status = request.ProblemStatus,
-            Updated = _currentDateTime.CurrentDateTime
+            Updated = _currentDateTime.CurrentDateTime,
+            UpdatorId = request.SenderId
         });
-
-        await _appRepository.Problems.Update(problem);
 
         await _appRepository.SaveChangesAsync();
 

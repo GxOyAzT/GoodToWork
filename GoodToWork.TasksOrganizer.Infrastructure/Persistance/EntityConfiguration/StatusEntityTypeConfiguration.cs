@@ -11,5 +11,9 @@ internal class StatusEntityTypeConfiguration : IEntityTypeConfiguration<StatusEn
         builder.HasOne(s => s.Problem)
             .WithMany(p => p.Statuses)
             .HasForeignKey(s => s.ProblemId);
+
+        builder.HasOne(s => s.Updator)
+            .WithMany(u => u.ChangedStatuses)
+            .HasForeignKey(s => s.UpdatorId);
     }
 }

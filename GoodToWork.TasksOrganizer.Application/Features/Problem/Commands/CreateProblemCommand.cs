@@ -36,13 +36,22 @@ public class CreateProblemHandler : IRequestHandler<CreateProblemCommand, Guid>
 
     public async Task<Guid> Handle(CreateProblemCommand request, CancellationToken cancellationToken)
     {
-        var projectUser = await _appRepository.ProjectUsers
+        var creator = await _appRepository.ProjectUsers
             .Find(e => e.ProjectId == request.ProjectId && e.UserId == request.SenderId &&
-            e.Role == (UserProjectRoleEnum.Moderator & UserProjectRoleEnum.Creator));
+            (e.Role.HasFlag(UserProjectRoleEnum.Moderator) | e.Role.HasFlag(UserProjectRoleEnum.Creator)));
 
-        if (projectUser is null)
+        if (creator is null)
         {
             throw new NoAccessException("You have no access to create new task.", HttpStatusCode.Forbidden);
+        }
+
+        var performer = await _appRepository.ProjectUsers
+            .Find(e => e.ProjectId == request.ProjectId && e.UserId == request.PerformerId &&
+            e.Role.HasFlag(UserProjectRoleEnum.Performer));
+
+        if (performer is null)
+        {
+            throw new NoAccessException("Choosen user cannot be assigned as performer.", HttpStatusCode.Forbidden);
         }
 
         var validationResult = await _mediator.Send(new ValidateProblemQuery(request.Title, request.Description));
