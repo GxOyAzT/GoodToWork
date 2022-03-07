@@ -8,7 +8,7 @@ namespace GoodToWork.NotificationService.Infrastructure.Persistance.Repositories
 public class SharedRepository<TEntity> : ISharedRepository<TEntity> 
     where TEntity : BaseEntity
 {
-    private readonly IMongoCollection<TEntity> _collection;
+    protected readonly IMongoCollection<TEntity> _collection;
 
     public SharedRepository(
         IAppDatabaseConfiguration configuration)

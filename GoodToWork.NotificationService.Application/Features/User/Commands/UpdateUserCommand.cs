@@ -24,6 +24,7 @@ public sealed class UpdateUserHandler : IRequestHandler<UpdateUserCommand>
         {
             user = new UserEntity()
             {
+                Id = request.UserId,
                 Email = request.Email,
                 UserName = request.Username
             };

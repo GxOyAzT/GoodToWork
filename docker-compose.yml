@@ -14,6 +14,8 @@ services:
     build:
       context: .
       dockerfile: GoodToWork.NotificationService.API/Dockerfile
+    ports:
+      - 448:443
 
   messages:
     container_name: rabbitmq
@@ -27,6 +29,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=rabbitmqPasswork12!
   
   tasksorganizerdatabase:
+    container_name: "tasksOrganizer-db-sql"
     image: "mcr.microsoft.com/mssql/server"
     environment:
       SA_PASSWORD: "password123"
