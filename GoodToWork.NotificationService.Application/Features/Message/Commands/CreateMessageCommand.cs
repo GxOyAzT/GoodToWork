@@ -1,4 +1,5 @@
-﻿using GoodToWork.NotificationService.Application.Features.CurrentDateTime;
+﻿using GoodToWork.NotificationService.Application.ApiModels.Message;
+using GoodToWork.NotificationService.Application.Features.CurrentDateTime;
 using GoodToWork.NotificationService.Application.Repositories;
 using GoodToWork.NotificationService.Domain.Entities;
 using GoodToWork.Shared.Common.Domain.Exceptions.Entities;
@@ -6,9 +7,9 @@ using MediatR;
 
 namespace GoodToWork.NotificationService.Application.Features.Message.Commands;
 
-public sealed record CreateMessageCommand(Guid SenderId, Guid ReceiverId, string Message) : IRequest<MessageEntity>;
+public sealed record CreateMessageCommand(Guid SenderId, Guid ReceiverId, string Message) : IRequest<MessageBaseModel>;
 
-public sealed class CreateMessageHandler : IRequestHandler<CreateMessageCommand, MessageEntity>
+public sealed class CreateMessageHandler : IRequestHandler<CreateMessageCommand, MessageBaseModel>
 {
     private readonly IAppRepository _appRepository;
     private readonly ICurrentDateTime _currentDateTime;
@@ -21,10 +22,8 @@ public sealed class CreateMessageHandler : IRequestHandler<CreateMessageCommand,
         _currentDateTime = currentDateTime;
     }
 
-    public async Task<MessageEntity> Handle(CreateMessageCommand request, CancellationToken cancellationToken)
+    public async Task<MessageBaseModel> Handle(CreateMessageCommand request, CancellationToken cancellationToken)
     {
-        var x = await _appRepository.Users.Get();
-
         var sender = await _appRepository.Users.Find(request.SenderId);
 
         if (sender == null)
@@ -50,6 +49,6 @@ public sealed class CreateMessageHandler : IRequestHandler<CreateMessageCommand,
 
         await _appRepository.Messages.Insert(newMessage);
 
-        return newMessage;
+        return new MessageBaseModel(newMessage);
     }
 }

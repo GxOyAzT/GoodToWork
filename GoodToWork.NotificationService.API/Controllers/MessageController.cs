@@ -1,6 +1,6 @@
-﻿using GoodToWork.NotificationService.Application.Features.Message.Commands;
+﻿using GoodToWork.NotificationService.Application.ApiModels.Message;
+using GoodToWork.NotificationService.Application.Features.Message.Commands;
 using GoodToWork.NotificationService.Application.Features.Message.Queries;
-using GoodToWork.NotificationService.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,11 +20,11 @@ public class MessageController : ControllerBase
 
     [HttpPost]
     [Route("create")]
-    public async Task Create([FromBody] CreateMessageCommand createMessageCommand) =>
+    public async Task<MessageBaseModel> Create([FromBody] CreateMessageCommand createMessageCommand) =>
         await _mediator.Send(createMessageCommand);
 
     [HttpGet]
     [Route("get/{senderId}/{receiverId}/{interval}")]
-    public async Task<List<MessageEntity>> Get([FromRoute] Guid senderId, [FromRoute] Guid receiverId, [FromRoute] int interval) =>
+    public async Task<List<MessageBaseModel>> Get([FromRoute] Guid senderId, [FromRoute] Guid receiverId, [FromRoute] int interval) =>
         await _mediator.Send(new GetMessagesQuery(senderId, receiverId, interval));
 }
