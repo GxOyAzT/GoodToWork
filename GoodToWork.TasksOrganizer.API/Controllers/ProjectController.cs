@@ -19,26 +19,41 @@ public class ProjectController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Returns all projects where user is assigned
+    /// </summary>
     [HttpGet]
     [Route("getalluser/{senderId}")]
     public async Task<List<ProjectBaseModel>> Get([FromRoute] Guid senderId) =>
         await _mediator.Send(new GetSenderProjectsQuery(senderId));
 
+    /// <summary>
+    /// Create new project
+    /// </summary>
     [HttpPost]
     [Route("create")]
     public async Task<ProjectEntity> Create([FromBody] CreateProjectCommand createProjectCommand) =>
         await _mediator.Send(createProjectCommand);
 
+    /// <summary>
+    /// Get project model with dependencies required in editing view
+    /// </summary>
     [HttpGet]
     [Route("getforedit/{senderId}/{projectId}")]
     public async Task<ProjectEditModel> GetForEdit([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
         await _mediator.Send(new GetProjectForEditQuery(projectId, senderId));
 
+    /// <summary>
+    /// Get details about project
+    /// </summary>
     [HttpGet]
     [Route("detail/{senderId}/{projectId}")]
     public async Task<ProjectDetailModel> Detail([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
         await _mediator.Send(new GetProjectForDetailQuery(projectId, senderId));
 
+    /// <summary>
+    /// Adding user to project
+    /// </summary>
     [HttpPatch]
     [Route("addcoworkertoproject")]
     public async Task<ProjectEditModel> AddCoworkerToProject([FromBody] AddPerformerToProjectCommand addPerformerToProjectCommand)
@@ -48,6 +63,9 @@ public class ProjectController : ControllerBase
         return await _mediator.Send(new GetProjectForEditQuery(addPerformerToProjectCommand.ProjectId, addPerformerToProjectCommand.SenderId));
     }
 
+    /// <summary>
+    /// Change user role in project
+    /// </summary>
     [HttpPatch]
     [Route("updatecoworkerrole")]
     public async Task<Unit> UpdateCorowkerRole([FromBody] UpdatePerformerRoleCommand updatePerformerRoleCommand) =>

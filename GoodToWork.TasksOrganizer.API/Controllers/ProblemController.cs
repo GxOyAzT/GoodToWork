@@ -18,16 +18,25 @@ public class ProblemController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Get details about problem, with comments and statuses
+    /// </summary>
     [HttpGet]
     [Route("detail/{problemId}/{senderId}")]
     public async Task<ProblemDetailModel> Create([FromRoute] Guid problemId, [FromRoute] Guid senderId) =>
         await _mediator.Send(new GetProblemDetailQuery(problemId, senderId));
 
+    /// <summary>
+    /// Change user role in project
+    /// </summary>
     [HttpPost]
     [Route("create")]
     public async Task<Guid> Create([FromBody] CreateProblemCommand createProblemCommand) =>
         await _mediator.Send(createProblemCommand);
 
+    /// <summary>
+    /// Update problem's status
+    /// </summary>
     [HttpPost]
     [Route("updatestatus")]
     public async Task UpdateStatus([FromBody] UpdateProblemStatusCommand updateProblemStatusCommand) =>
