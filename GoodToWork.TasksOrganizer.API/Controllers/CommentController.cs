@@ -17,6 +17,9 @@ public class CommentController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Add comment to problem
+    /// </summary>
     [HttpPost]
     [Route("create")]
     public async Task<CommentBaseModel> Create([FromBody] CreateCommentCommand createCommentCommand) =>

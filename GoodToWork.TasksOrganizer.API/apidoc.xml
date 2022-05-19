@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GoodToWork.TasksOrganizer.API</name>
+    </assembly>
+    <members>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.CommentController.Create(GoodToWork.TasksOrganizer.Application.Features.Comment.Command.CreateCommentCommand)">
+            <summary>
+            Add comment to problem
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProblemController.Create(System.Guid,System.Guid)">
+            <summary>
+            Get details about problem, with comments and statuses
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProblemController.Create(GoodToWork.TasksOrganizer.Application.Features.Problem.Commands.CreateProblemCommand)">
+            <summary>
+            Change user role in project
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProblemController.UpdateStatus(GoodToWork.TasksOrganizer.Application.Features.Problem.Commands.UpdateProblemStatusCommand)">
+            <summary>
+            Update problem's status
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProjectController.Get(System.Guid)">
+            <summary>
+            Returns all projects where user is assigned
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProjectController.Create(GoodToWork.TasksOrganizer.Application.Features.Project.Commands.CreateProjectCommand)">
+            <summary>
+            Create new project
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProjectController.GetForEdit(System.Guid,System.Guid)">
+            <summary>
+            Get project model with dependencies required in editing view
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProjectController.Detail(System.Guid,System.Guid)">
+            <summary>
+            Get details about project
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProjectController.AddCoworkerToProject(GoodToWork.TasksOrganizer.Application.Features.Project.Commands.AddPerformerToProjectCommand)">
+            <summary>
+            Adding user to project
+            </summary>
+        </member>
+        <member name="M:GoodToWork.TasksOrganizer.API.Controllers.ProjectController.UpdateCorowkerRole(GoodToWork.TasksOrganizer.Application.Features.Project.Commands.UpdatePerformerRoleCommand)">
+            <summary>
+            Change user role in project
+            </summary>
+        </member>
+    </members>
+</doc>

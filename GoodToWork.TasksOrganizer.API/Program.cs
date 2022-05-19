@@ -16,7 +16,9 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(config =>
+    config.IncludeXmlComments(@"apidoc.xml")
+); ;
 
 builder.Services.ConfigureApplicationLayer();
 

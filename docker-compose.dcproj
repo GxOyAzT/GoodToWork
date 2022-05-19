@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>7830b3b5-70cf-4d31-833a-1b3fa3807454</ProjectGuid>
-    <DockerLaunchAction>None</DockerLaunchAction>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>goodtowork.tasksorganizer.api</DockerServiceName>
   </PropertyGroup>
