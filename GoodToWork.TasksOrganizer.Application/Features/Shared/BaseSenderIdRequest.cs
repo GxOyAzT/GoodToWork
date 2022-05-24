@@ -1,3 +1,3 @@
 ﻿namespace GoodToWork.TasksOrganizer.Application.Features.Shared;
 
-public abstract record BaseSenderIdRequest(Guid SenderId);
+public record BaseSenderIdRequest(Guid SenderId);

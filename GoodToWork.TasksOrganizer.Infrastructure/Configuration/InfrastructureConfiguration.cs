@@ -11,6 +11,7 @@ using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Repositories.Problem;
 using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Repositories.Project;
 using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Repositories.ProjectUser;
 using GoodToWork.TasksOrganizer.Infrastructure.Persistance.Repositories.User;
+using GoodToWork.TasksOrganizer.Infrastructure.Utilities.UrlDeserialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -29,6 +30,8 @@ public static class InfrastructureConfiguration
         services.AddScoped<IProjectRepository, ProjectRepository>();
         services.AddScoped<IProblemRepository, ProblemRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
+
+        services.AddTransient<IUrlDeserializer, UrlDeserializer>();
 
         return services;
     }

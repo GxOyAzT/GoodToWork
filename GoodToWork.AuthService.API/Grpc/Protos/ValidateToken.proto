@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GoodToWork.AuthService.API";
+
+package token;
+
+service ValidateToken {
+  rpc ValidateToken (TokenRequest) returns (TokenResponse);
+}
+
+message TokenRequest {
+  string token = 1;
+}
+
+message TokenResponse {
+  string userId = 1;
+}
