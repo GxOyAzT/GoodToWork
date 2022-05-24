@@ -23,8 +23,8 @@ public class ProjectController : ControllerBase
     /// Returns all projects where user is assigned
     /// </summary>
     [HttpGet]
-    [Route("getalluser/{senderId}")]
-    public async Task<List<ProjectBaseModel>> Get([FromRoute] Guid senderId) =>
+    [Route("getalluser")]
+    public async Task<List<ProjectBaseModel>> Get([FromHeader] Guid senderId) =>
         await _mediator.Send(new GetSenderProjectsQuery(senderId));
 
     /// <summary>
@@ -39,16 +39,16 @@ public class ProjectController : ControllerBase
     /// Get project model with dependencies required in editing view
     /// </summary>
     [HttpGet]
-    [Route("getforedit/{senderId}/{projectId}")]
-    public async Task<ProjectEditModel> GetForEdit([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
+    [Route("getforedit/{projectId}")]
+    public async Task<ProjectEditModel> GetForEdit([FromHeader] Guid senderId, [FromRoute] Guid projectId) =>
         await _mediator.Send(new GetProjectForEditQuery(projectId, senderId));
 
     /// <summary>
     /// Get details about project
     /// </summary>
     [HttpGet]
-    [Route("detail/{senderId}/{projectId}")]
-    public async Task<ProjectDetailModel> Detail([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
+    [Route("detail/{projectId}")]
+    public async Task<ProjectDetailModel> Detail([FromHeader] Guid senderId, [FromRoute] Guid projectId) =>
         await _mediator.Send(new GetProjectForDetailQuery(projectId, senderId));
 
     /// <summary>
