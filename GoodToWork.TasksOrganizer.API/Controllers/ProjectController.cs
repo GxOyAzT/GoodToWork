@@ -20,8 +20,8 @@ public class ProjectController : ControllerBase
     }
 
     [HttpGet]
-    [Route("getalluser/{senderId}")]
-    public async Task<List<ProjectBaseModel>> Get([FromRoute] Guid senderId) =>
+    [Route("getalluser")]
+    public async Task<List<ProjectBaseModel>> Get([FromHeader] Guid senderId) =>
         await _mediator.Send(new GetSenderProjectsQuery(senderId));
 
     [HttpPost]
@@ -30,13 +30,13 @@ public class ProjectController : ControllerBase
         await _mediator.Send(createProjectCommand);
 
     [HttpGet]
-    [Route("getforedit/{senderId}/{projectId}")]
-    public async Task<ProjectEditModel> GetForEdit([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
+    [Route("getforedit/{projectId}")]
+    public async Task<ProjectEditModel> GetForEdit([FromHeader] Guid senderId, [FromRoute] Guid projectId) =>
         await _mediator.Send(new GetProjectForEditQuery(projectId, senderId));
 
     [HttpGet]
-    [Route("detail/{senderId}/{projectId}")]
-    public async Task<ProjectDetailModel> Detail([FromRoute] Guid senderId, [FromRoute] Guid projectId) =>
+    [Route("detail/{projectId}")]
+    public async Task<ProjectDetailModel> Detail([FromHeader] Guid senderId, [FromRoute] Guid projectId) =>
         await _mediator.Send(new GetProjectForDetailQuery(projectId, senderId));
 
     [HttpPatch]

@@ -1,3 +1,5 @@
+using GoodToWork.Shared.AuthClient.Configuration;
+using GoodToWork.Shared.AuthClient.DependencyConfiguration;
 using GoodToWork.Shared.Common.Domain.Exceptions.Shared;
 using GoodToWork.Shared.Common.Domain.Exceptions.Validation;
 using GoodToWork.Shared.MessageBroker.DTOs.User;
@@ -5,7 +7,8 @@ using GoodToWork.Shared.MessageBroker.Infrastructure.Configuration;
 using GoodToWork.TasksOrganizer.Application;
 using GoodToWork.TasksOrganizer.Application.Configuration;
 using GoodToWork.TasksOrganizer.Infrastructure.Configuration;
-using Newtonsoft.Json;
+using GoodToWork.TasksOrganizer.Infrastructure.Exceptions;
+using GoodToWork.TasksOrganizer.Infrastructure.Middlewares;
 using System.Net;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -33,25 +36,13 @@ builder.Services.AddMessageBroker(c =>
     c.RegisterListener<UserUpdatedEvent>();
 });
 
+builder.Services.AddAuthClient(builder.Configuration.GetSection(AuthClientConfig.AuthServiceSection).Get<AuthClientConfig>());
+
 builder.Services.AddCors();
 
 var app = builder.Build();
 
-app.Use(async (context, next) =>
-{
-    try
-    {
-        await next.Invoke();
-    }
-    catch (ValidationFailedException ex)
-    {
-        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-    }
-    catch(DomainException ex)
-    {
-        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-    }
-});
+app.UseExceptionMiddleware();
 
 if (app.Environment.IsDevelopment())
 {
@@ -66,7 +57,7 @@ app.UseCors(c => c
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseAuthMiddleware();
 
 app.MapControllers();
 

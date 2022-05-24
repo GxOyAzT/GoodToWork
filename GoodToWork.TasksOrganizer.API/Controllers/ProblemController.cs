@@ -20,7 +20,7 @@ public class ProblemController : ControllerBase
 
     [HttpGet]
     [Route("detail/{problemId}/{senderId}")]
-    public async Task<ProblemDetailModel> Create([FromRoute] Guid problemId, [FromRoute] Guid senderId) =>
+    public async Task<ProblemDetailModel> Create([FromRoute] Guid problemId, [FromHeader] Guid senderId) =>
         await _mediator.Send(new GetProblemDetailQuery(problemId, senderId));
 
     [HttpPost]
