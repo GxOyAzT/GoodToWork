@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GoodToWork.AuthService.Infrastructure\GoodToWork.AuthService.Infrastructure.csproj" />
+    <ProjectReference Include="..\GoodToWork.Shared.MessageBroker.Infrastructure\GoodToWork.Shared.MessageBroker.Infrastructure.csproj" />
   </ItemGroup>
 	
 	<ItemGroup>

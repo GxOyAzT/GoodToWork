@@ -29,7 +29,7 @@ public static class GetUserFromToken
         {
             var sessionId = _tokenDeserializer.GetSessionIdFromToken(request.Token);
 
-            var userModel = await _sessionRepository.TryGetUserById(Guid.Parse(sessionId), cancellationToken);
+            var userModel = await _sessionRepository.TryGetUserByIdAsync(Guid.Parse(sessionId), cancellationToken);
 
             return userModel;
         }

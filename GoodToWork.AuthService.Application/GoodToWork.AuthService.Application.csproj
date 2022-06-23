@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GoodToWork.AuthService.Domain\GoodToWork.AuthService.Domain.csproj" />
+    <ProjectReference Include="..\GoodToWork.Shared.MessageBroker.Application\GoodToWork.Shared.MessageBroker.Application.csproj" />
   </ItemGroup>
 
 </Project>

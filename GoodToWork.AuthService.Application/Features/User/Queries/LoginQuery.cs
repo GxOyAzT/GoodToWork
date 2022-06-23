@@ -37,7 +37,7 @@ public static class LoginQuery
                 ExpirationDate = DateTime.Now.AddDays(7)
             };
 
-            await _sessionRepository.AddSession(session, cancellationToken);
+            await _sessionRepository.AddSessionAsync(session, cancellationToken);
 
             return new TokenModel() 
             { 

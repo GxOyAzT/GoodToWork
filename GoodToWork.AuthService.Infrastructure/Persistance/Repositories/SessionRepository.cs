@@ -17,7 +17,7 @@ public class SessionRepository : ISessionRepository
         _databaseConfig = databaseConfig;
     }
 
-    public async Task<SessionModel> AddSession(SessionModel sessionModel, CancellationToken ct)
+    public async Task<SessionModel> AddSessionAsync(SessionModel sessionModel, CancellationToken ct)
     {
         using var connection = new SqlConnection(_databaseConfig.ConnectionString);
         try
@@ -40,7 +40,26 @@ public class SessionRepository : ISessionRepository
         }
     }
 
-    public async Task<UserModel> TryGetUserById(Guid id, CancellationToken ct)
+    public async Task DeactivateAllUserSessionsAsync(Guid userId, CancellationToken ct)
+    {
+        using var connection = new SqlConnection(_databaseConfig.ConnectionString);
+        try
+        {
+            connection.Open();
+
+            await connection.ExecuteAsync(new CommandDefinition($"execute LogoutFromAllSessions '{userId}'", ct));
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+    }
+
+    public async Task<UserModel> TryGetUserByIdAsync(Guid id, CancellationToken ct)
     {
         using var connection = new SqlConnection(_databaseConfig.ConnectionString);
         try

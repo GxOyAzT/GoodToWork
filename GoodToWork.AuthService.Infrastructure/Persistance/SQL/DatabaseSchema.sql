@@ -9,5 +9,5 @@
 create table [Sessions] (
 	Id uniqueidentifier primary key,
 	UserId uniqueidentifier foreign key references Users(Id) NOT NULL,
-	ExpirationDate date NOT NULL
+	ExpirationDate datetime NOT NULL
 );
